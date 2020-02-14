@@ -1,0 +1,37 @@
+
+
+<div class="container demo-1">
+			<!-- Top Navigation -->
+			
+			
+			<div class="main clearfix">
+				<form id="nl-form" class="nl-form" action="advancedresult" method="GET">
+					I'm looking for a shop called  
+					<input type="text" name="shopName" value="" placeholder="Some Shop" data-subline="For example: <em>Spar</em> or <em>Media Markt</em>"/>
+					<br />which is a
+					<input type="text" name="category" value="" placeholder="non-specific" data-subline="For example: <em>Supermarket</em> or <em>Gift</em>"/>
+					shop and is around 
+					<input type="number" name="radius" value="" placeholder="some" data-subline="For example: <em>100</em> or <em>5000</em>"/>
+					meters away from 
+					<input type="text" name="poiName" value="" placeholder="this Point of interest" data-subline="For example: <em>GrazMuseum</em> or <em>Hauptbahnhof</em>"/>
+					<div class="nl-submit-wrap">
+						<button class="nl-submit" type="submit">Find a shop</button>
+						<button class="nl-submit" onclick="window.location.href='/'" type="button">Basic Search</button>
+					</div>
+					<div class="nl-overlay"></div>
+
+				
+				</form>
+					Avaliabe Categories: <select id="category">
+						<option value="" selected>non-specific</option>
+						{{#each records}}
+						<option value="{{this.category}}">{{this.category}}</option>
+						{{/each}}
+					</select>
+			</div>
+		</div><!-- /container -->
+		<script src="javascripts/nlform.js"></script>
+		<script>
+			var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+		</script>
+	</body>
