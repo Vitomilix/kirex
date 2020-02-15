@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const Admin = sequelize.define('Admin', {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     companyNumber:DataTypes.STRING,
@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     resetToken: DataTypes.STRING,
     resetTokenExpiration: DataTypes.DATE
   }, {});
-  User.associate = function (models) {
-    User.hasMany(models.Record)
+  Admin.associate = function (models) {
+    Admin.hasMany(models.Record)
   };
-  return User;
+  return Admin;
 };
