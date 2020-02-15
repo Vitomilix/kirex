@@ -1,37 +1,47 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Shops', {
+    return queryInterface.createTable('Incidents', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      lat: {
+      division: {
         type: Sequelize.STRING
       },
-      lon: {
+      incidentLocation: {
         type: Sequelize.STRING
       },
-      name: {
+      division_employee: {
         type: Sequelize.STRING
       },
-      website: {
+       events: {
         type: Sequelize.STRING
       },
-      tradingHours: {
+        date: {
+        type: Sequelize.DATE
+      },
+         injuries: {
         type: Sequelize.STRING
       },
-       category: {
-        type: Sequelize.STRING
-      },
-      street: {
-        type: Sequelize.STRING
-      },
-      postalCode: {
+        downtime: {
         type: Sequelize.INTEGER
       },
+        cause: {
+        type: Sequelize.STRING
+      },
+       measures: {
+        type: Sequelize.STRING
+      },
+        measures: {
+        type: Sequelize.STRING
+      },
+      
+        imageOne: {
+        type: Sequelize.STRING
+      },   
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -43,6 +53,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Records');
+    return queryInterface.dropTable('Incidents');
   }
 };

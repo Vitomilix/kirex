@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "mysql",
-    "password": "supersecret",
-    "database": "sashops",
-    "host": "db",
+    "username": "root",
+    "password": "12345678",
+    "database": "kirex",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
