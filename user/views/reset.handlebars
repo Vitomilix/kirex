@@ -1,0 +1,33 @@
+<div class="form-container position-relative shadow">
+  <form action="/users/reset" method="post" class="needs-validation" novalidate>
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <div class="row mb-4">
+      <div class="col-2 ml-2">
+        <small class="text-danger pl-2">Required*</small>
+      </div>
+      <div class="col-8">
+        <h4 class="text-center font-weight-bold">Reset your Password</h4>
+      </div>
+    </div>
+    <!--Display error message-->
+    {{> message}}
+    <!--From input-->
+    <div class="form-group row ml-1 mr-4 justify-content-end">
+      <label for="email" class="col-3 col-form-label text-right">Email*</label>
+      <input type="email" name="email" id="email" class="col-9 form-control" value="{{user.email}}"
+        pattern="^\S+@\w+\.\w+$" required>
+      <div class="valid-feedback col-9 p-0">
+        Looks good!
+      </div>
+      <div class="invalid-feedback col-9 p-0">
+        The email must be of the format shopping@kwiens.com
+      </div>
+    </div>
+    <div class="row ml-1 mr-4">
+      <div class="col-3"></div>
+      <div class="col-9 p-0 mt-1">
+        <input type="submit" value="Reset Password" class="btn btn-info btn-block">
+      </div>
+    </div>
+  </form>
+</div>
