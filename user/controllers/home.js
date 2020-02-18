@@ -3,7 +3,7 @@
 
 // Include models
 const db = require('../models')
-const Shop = db.Shop
+const Hira = db.Hira
 const Poi = db.Poi
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
@@ -23,24 +23,26 @@ module.exports = {
 
   getAllShops: async (req, res) => {
     try {
-      // populate dropdown
-      const records = await Shop.findAll({
-        distinct: true,
-        attributes: [['category', 'category']],
+      // // populate dropdown
+      // const records = await Shop.findAll({
+      //   distinct: true,
+      //   attributes: [['category', 'category']],
         
-        order: [['id', 'DESC']]
+      //   order: [['id', 'DESC']]
           
-      })
+      // })
     
       
 
   
-      // check if any record is found
-      const isEmptyRecord = records.length ? false : true
+      // // check if any record is found
+      // const isEmptyRecord = records.length ? false : true
       
-        
+    let title = "Welcome to KirEx"
   
-      res.render('index', { indexCSS: true, records,isEmptyRecord })
+      res.render('index', { indexCSS: true,
+      layout: "main",
+      title: title})
     } catch (err) {
       return console.log(err)
     }

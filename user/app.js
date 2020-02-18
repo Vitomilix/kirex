@@ -11,7 +11,7 @@ const flash = require('connect-flash')
 const csrf = require('csurf')
 const mysql = require('mysql')
 
-var dbquery = mysql.createConnection({
+const dbquery = mysql.createConnection ({
     host: 'localhost',
     user: 'root',
     password: '12345678',
@@ -32,8 +32,9 @@ if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 // Include models
 const db = require('./models')
 const User = db.User
-const Hira = db.Hira
-const Incidents = db.Incidents
+const Search = db.Search
+const Shop = db.Shop
+const Poi = db.Poi
 
 // Initialize csrf protection middleware
 const csrfProtection = csrf()
@@ -47,10 +48,15 @@ app.set('view engine', 'handlebars')
 
 // Include routers
 const homeRoutes = require('./routes/home')
-const hiraRoutes = require('./routes/hira')
-const incidentsRoutes = require('./routes/incidents')
-const userRoutes = require('./routes/user')
 
+
+const shopRoutes = require('./routes/shop')
+const poiRoutes = require('./routes/poi')
+const searchRoutes = require('./routes/search')
+const userRoutes = require('./routes/user')
+const hiraRoutes = require('./routes/hira')
+const adminRoutes = require('./routes/admin')
+const {getShopPoi} = require('./routes/advanced');
 
 
 // Set up server related variable
@@ -104,21 +110,31 @@ app.use(express.static('public'))
 
 // home route
 app.use('/', homeRoutes)
+app.use('/admin', adminRoutes)
 
-// admin routes
+// shop route
+app.use('/admin/shop', shopRoutes)
 
+// poi routes
+app.use('/admin/poi', poiRoutes)
 
+// poi routes
+app.use('/admin/search', searchRoutes)
 
-// hira route
+// Advanced search route
+app.get('/advancedresult', getShopPoi)
 app.use('/hira', hiraRoutes)
 
-// Incidents routes
-app.use('/incidents', incidentsRoutes)
+app.use('/map', homeRoutes)
+app.use('/advancedmap', homeRoutes)
+
+
+
+
+
 
 // user routes
 app.use('/users', userRoutes)
-
-
 
 
 

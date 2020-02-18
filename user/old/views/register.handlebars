@@ -1,0 +1,85 @@
+<div class="form-container position-relative shadow">
+  <form action="/users/register" method="post" class="needs-validation register-form" novalidate>
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <div class="row mb-4">
+      <div class="col-2 ml-2">
+        <small class="text-danger pl-2">Required*</small>
+      </div>
+      <div class="col-8">
+        <h4 class="text-center font-weight-bold">Register</h4>
+      </div>
+    </div>
+    <!--Display error message-->
+    {{> message}}
+    <!--From input-->
+    <div class="form-group row ml-1 mr-4 justify-content-end">
+      <label for="name" class="col-3 col-form-label text-right">Name*</label>
+      <input type="text" name="name" id="name" class="col-9 form-control" value="{{user.name}}" required>
+      <div class="valid-feedback col-9 p-0">
+        Nice to meet you！
+      </div>
+      <div class="invalid-feedback col-9 p-0">
+        Your Name is required！
+      </div>
+    </div>
+    <div class="form-group row ml-1 mr-4 justify-content-end">
+      <label for="email" class="col-3 col-form-label text-right">Email*</label>
+      <input type="email" name="email" id="email" class="col-9 form-control" value="{{user.email}}"
+        pattern="^\S+@\w+\.\w+$" required>
+      <div class="valid-feedback col-9 p-0">
+        Looks Professional!
+      </div>
+      <div class="invalid-feedback col-9 p-0">
+        Your email must be of the form howzit@kirex.com
+      </div>
+    </div>
+      <div class="form-group row ml-1 mr-4 justify-content-end">
+      <label for="phoneNumber" class="col-3 col-form-label text-right">Employee Number*</label>
+      <input type="text" name="phoneNumber" id="companyName" class="col-9 form-control" value="{{user.phoneNumber}}"
+       required>
+      <div class="valid-feedback col-9 p-0">
+        Looks Good!
+      </div>
+      <div class="invalid-feedback col-9 p-0">
+        Your Phone number is needed
+      </div>
+    </div>
+    <div class="form-group row ml-1 mr-4 justify-content-end">
+      <label for="password" class="col-3 col-form-label text-right">Password*</label>
+      <input type="password" name="password" id="password" class="col-9 form-control" value="{{user.password}}"
+        pattern="^\S{6,12}$" required>
+      <div class="valid-feedback col-9 p-0">
+        Looks secure！
+      </div>
+      <div class="invalid-feedback col-9 p-0">
+        Your email must have a length of 6 - 12 Charactars！
+      </div>
+    </div>
+    <div class="form-group row ml-1 mr-4 justify-content-end">
+      <label for="rePassword" class="col-3 col-form-label text-right">Confirm Password*</label>
+      <input type="password" name="rePassword" id="rePassword" class="col-9 form-control" pattern="^\S{6,12}$"
+        value="{{user.re-password}}" required>
+      <div class="valid-feedback col-9 p-0">
+        Let's hope you remember your password！
+      </div>
+      <div class="invalid-feedback col-9 p-0">
+        Nope, thats not the same！
+      </div>
+    </div>
+    <div class="">
+      <div class="col-3"></div>
+      <div class="">
+        <input type="submit" value="Register" class="btn btn-info btn-block">
+      </div>
+    </div>
+    <hr class="mx-4">
+    <div class="row ml-1 mr-4 mt-0  justify-content-end">
+      <div class="col-3 col-form-label">Or you can:</div>
+      <div class="col-12 p-0 mt-0 d-flex justify-content-between align-items-center">
+        <a href="/users/login" class="btn btn-warning login-button btn-sm"><i
+            class=""></i>Login Here</a>
+        
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,191 @@
+
+<br>
+<br>
+<br>
+
+
+<style type="text/css">
+.radio-toolbar {
+  margin: 10px;
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio-toolbar label {
+    display: inline-block;
+    background-color:rgb(184, 56, 45);
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.radio-toolbar label:hover {
+  background-color: rgb(150, 47, 36);
+}
+
+.radio-toolbar input[type="radio"]:focus + label {
+    border: 2px rgb(44, 43, 43);
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+    background-color:rgb(44, 43, 43);
+    border-color: rgb(44, 43, 43);
+}
+
+  #regiration_form fieldset:not(:first-of-type) {
+    display: none;
+  }
+  </style>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <div class="alert alert-success hide"></div>
+  <form id="regiration_form" action="/" method="GET" novalidate>
+  <fieldset>
+    <h2>Step 1: General Information</h2>
+    <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{user.name}}" readonly>
+    </div>
+
+    <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="Email" value="{{user.email}}" readonly>
+    </div>
+			<div class="form-group">
+    <label for="taskActivity">Task/Activity</label>
+    <input type="text" class="form-control" id="taskActivity" name="taskActivity" placeholder="Task/Activity to be performed">
+    </div>
+		<div class="form-group">
+    <label for="projectNumber">Project Number</label>
+    <input type="text" class="form-control" id="projectNumber" name="projectNumber" placeholder="ProjectNumber">
+    </div>
+		<div class="form-group">
+    <label for="date">Date</label>
+    <input type="date" class="form-control" id="date" name="date" placeholder="Date of Risk assessment">
+    </div>
+			<div class="form-group">
+    <label for="area">Area</label>
+    <input type="text" class="form-control" id="area" name="area" placeholder="Area">
+    </div>
+    <input type="button" name="next" class="next btn btn-info" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2> Step 2: Task specific infomation</h2>
+    <div class="form-group">
+    <label for="doneBefore">Has this task been done before</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesdoneBefore" name="doneBefore" value="1">
+    <label for="radioYesdoneBefore">Yes</label>
+
+    <input type="radio" id="radioNodoneBefore" name="doneBefore" value="0">
+    <label for="radioNodoneBefore">No</label>
+
+    <input type="radio" id="radioNAdoneBefore" name="doneBefore" value="2">
+    <label for="radioNAdoneBefore">N/A</label> 
+</div>
+    </div>
+     <div class="form-group">
+    <label for="haveChangesMade">Have changes been made to standard Processes that might introduce new Hazards</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYeschangesMade" name="haveChangesMade" value="1">
+    <label for="radioYeschangesMade">Yes</label>
+
+    <input type="radio" id="radioNochangesMade" name="haveChangesMade" value="0">
+    <label for="radioNochangesMade">No</label>
+
+    <input type="radio" id="radioNAchangesMade" name="haveChangesMade" value="2">
+    <label for="radioNAchangesMade">N/A</label> 
+</div>
+    </div>
+
+	  <div class="form-group">
+    <label for="safeAccess">Safe access to work area - clean and tidy</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYessafeAccess" name="safeAccess" value="1">
+    <label for="radioYessafeAccess">Yes</label>
+
+    <input type="radio" id="radioNosafeAccess" name="safeAccess" value="0">
+    <label for="radioNosafeAccess">No</label>
+
+    <input type="radio" id="radioNAsafeAccess" name="safeAccess" value="2">
+    <label for="radioNAsafeAccess">N/A</label> 
+</div>
+    </div>
+     <div class="form-group">
+    <label for="electricalEquipment">Electrical Equipment in good condition</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYeselectricalEquipment" name="electricalEquipment" value="1">
+    <label for="radioYeselectricalEquipment">Yes</label>
+
+    <input type="radio" id="radioNoelectricalEquipment" name="electricalEquipment" value="0">
+    <label for="radioNoelectricalEquipment">No</label>
+
+    <input type="radio" id="radioNAelectricalEquipment" name="electricalEquipment" value="2">
+    <label for="radioNAelectricalEquipment">N/A</label> 
+</div>
+    </div>
+	
+    <input type="button" name="previous" class="previous btn btn-primary" value="Previous" />
+    <input type="button" name="next" class="next btn btn-info" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2>Step 3: Contact Information</h2>
+    <div class="form-group">
+    <label for="mob">Mobile Number</label>
+    <input type="text" class="form-control" id="mob" placeholder="Mobile Number">
+    </div>
+    <div class="form-group">
+    <label for="address">Address</label>
+    <textarea  class="form-control" name="address" placeholder="Communication Address"></textarea>
+    </div>
+    <input type="button" name="previous" class="previous btn btn-default" value="Previous" />
+    <input type="submit" name="submit" class="submit btn btn-success" value="Submit" />
+  </fieldset>
+  </form>
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+  var current = 1,current_step,next_step,steps;
+  steps = $("fieldset").length;
+  $(".next").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().next();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(++current);
+  });
+  $(".previous").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().prev();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(--current);
+  });
+  setProgressBar(current);
+  // Change progress bar action
+  function setProgressBar(curStep){
+    var percent = parseFloat(100 / steps) * curStep;
+    percent = percent.toFixed();
+    $(".progress-bar")
+      .css("width",percent+"%")
+      .html(percent+"%");   
+  }
+});
+</script>
+
+

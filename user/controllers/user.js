@@ -17,34 +17,40 @@ const User = db.User
 const transporter = nodemailer.createTransport(sendgridTransport({
   auth: {
     // Hide SMTP sendgrind key
+    
     api_key: process.env.SENDGRID_KEY
   }
 }))
 
 module.exports = {
   getRegister: (req, res) => {
+
+    let title = "Register User | KirEx"
     res.render('register', {
+      layout: 'forms',
+      title: title,
       formCSS: true,
       formValidateJS: true
     })
   },
   postRegister: async (req, res) => {
     // And input
-    const { name, email, password, rePassword } = req.body
+    const { name,employeeNumber, email, password, rePassword } = req.body
     //  validation
     const errors = validationResult(req)
     
     if (!errors.isEmpty()) {
       return res.status(422).render('register', {
+        layout: 'forms',
         formCSS: true,
         formValidateJS: true,
         errorMessages: errors.array(),
-        user: { name, email, password, rePassword }
+        user: { name,employeeNumber, email, password, rePassword }
       })
     }
 
     try {
-      // Check if email exists in database
+      // Check if email exists in data base
       const user = await User.findOne({ where: { email: email } })
       // Email exists
       if (user) {
@@ -59,21 +65,21 @@ module.exports = {
       // store user into database
       await User.create({
         name: name,
+        employeeNumber: employeeNumber,
         email: email,
         password: hash
       })
 
       // Redirect to login page after successful signup
-      req.flash('sucess', 'Registration work! check your email and click on the link to login')
       res.redirect('/users/login')
        req.flash('sucess', 'Registration work! check your email and click on the link to login')
       
-      const link = "http://localhost:5000/users/login"
+      const link = "http://localhost:3000/users/login"
       // send successful sign up email
       await transporter.sendMail({
         to: email,
-        from: 'howzit@shoppingkwiens.com',
-        subject: 'Welcome to shopping Kwiens',
+        from: 'howzit@kirex',
+        subject: 'Welcome to KirEx',
         html: `
           <p>Howzit ${name},</p>
           <p>Nice to meet you. Click <a href=${link}>here</a> to get started</p>
@@ -85,7 +91,10 @@ module.exports = {
     }
   },
   getLogin: (req, res) => {
+    let title = "Login to KirEx"
     res.render('login', {
+      layout: 'forms',
+      title: title,
       formCSS: true,
       formValidateJS: true
     })
@@ -99,8 +108,11 @@ module.exports = {
     res.redirect('/')
   },
   getReset: (req, res) => {
+    let title = "Reset Password | KirEx"
     res.render('reset', {
+      layout: 'forms',
       formCSS: true,
+      title: title,
       formValidateJS: true,
     })
   },
@@ -128,11 +140,11 @@ module.exports = {
       // redirect back to login page
       res.redirect('/users/login')
       
-      const link = `http://localhost:5000/users/reset/${token}`
+      const link = `http://localhost:3000/users/reset/${token}`
       // send a reset email to user with unique token 
       transporter.sendMail({
         to: req.body.email,
-        from: 'eish@shoppingkwiens.com',
+        from: 'oh_bo@shoppingkwiens.com',
         subject: 'Password reset',
         html: `
           <p>Eish ${user.name},</p>
@@ -152,7 +164,10 @@ module.exports = {
       // find the user in the database
       const user = await User.findOne({ where: { resetToken: token, resetTokenExpiration: { [Op.gt]: Date.now() } } })
       // render to new password set up page
+      let title = "New Password | Kirex"
       res.render('new-password', {
+        layout: 'forms',
+        title: title,
         formCSS: true,
         formValidateJS: true,
         userId: user.id,
@@ -167,9 +182,11 @@ module.exports = {
     const { password, userId, passwordToken } = req.body
     // Validation
     const errors = validationResult(req)
-    
+    let title = "Reset Password | KirEx"
     if (!errors.isEmpty()) {
       return res.status(422).render('new-password', {
+        layout: 'forms',
+        title: title,
         formCSS: true,
         formValidateJS: true,
         userId: user.id,

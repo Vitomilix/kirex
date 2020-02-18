@@ -7,9 +7,10 @@ const homeController = require('../controllers/home')
 // Include authentication middleware
 const isAuthenticated = require('../config/auth')
 
-router.get('/',isAuthenticated, homeController.getAllShops)
-
-
+router.get('/', homeController.getAllShops)
+router.get('/result', homeController.getShopResult)
+router.get('/map', homeController.getMapData)
+router.get('/advanced', homeController.getAdvancedSearch)
 
 
 

@@ -16,11 +16,6 @@ router.post('/register', [
     .trim()
     .isLength({ min: 1 })
     .withMessage('Don\'t be so shy, please tell us how we should call you'),
-
-    body('companyNumber')
-    .trim()
-    .isLength({ min: 1 })
-    .withMessage('Don\'t be so shy, please tell us how we should call you'), 
   
   body('email')
     .trim()
@@ -50,7 +45,7 @@ router.get('/login', userController.getLogin)
 
 // login submit
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/hira',
+  successRedirect: '/',
   failureRedirect: '/users/login',
   failureFlash: true
 }))
