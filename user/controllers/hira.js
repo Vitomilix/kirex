@@ -12,9 +12,9 @@ module.exports = {
   getHome: async (req, res) => {
     try {
    
-   let { step } = req.query
+   let title = "Submit a new Hira | Kirex"
       
-      res.render('hira', { layout: 'main', formCSS: true, step})
+      res.render('hira', { layout: 'main', formCSS: true, title})
     } catch (err) {
       return console.log(err)
     }
