@@ -55,6 +55,7 @@ const poiRoutes = require('./routes/poi')
 const searchRoutes = require('./routes/search')
 const userRoutes = require('./routes/user')
 const hiraRoutes = require('./routes/hira')
+const incidentsRoutes = require('./routes/incidents')
 const adminRoutes = require('./routes/admin')
 const {getShopPoi} = require('./routes/advanced');
 
@@ -124,6 +125,7 @@ app.use('/admin/search', searchRoutes)
 // Advanced search route
 app.get('/advancedresult', getShopPoi)
 app.use('/hira', hiraRoutes)
+app.use('/incidents', incidentsRoutes)
 
 app.use('/map', homeRoutes)
 app.use('/advancedmap', homeRoutes)
