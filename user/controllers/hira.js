@@ -30,7 +30,7 @@ module.exports = {
       safeAccess,machineGuarding, correctEquipment,preinspectedEquipment,
          sds, controlToxic, fumeSystems,
           ppe, hazard, otherHazard, controlHazard, controlHazardOther, monitorProcess,
-          additionalComment } = req.body
+          additionalComments } = req.body
     //Input validation
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -41,7 +41,7 @@ module.exports = {
       safeAccess,machineGuarding, correctEquipment,preinspectedEquipment,
          sds, controlToxic, fumeSystems,
           ppe, hazard, otherHazard, controlHazard, controlHazardOther, monitorProcess,
-          additionalComment},
+          additionalComments},
         formValidateJS: true,
         errorMessages: errors.array()
       })
@@ -70,7 +70,7 @@ module.exports = {
       controlHazard: controlHazard,
       controlHazardOther: controlHazardOther,
       monitorProcess: monitorProcess,
-      additionalComment: additionalComment,
+      additionalComments: additionalComments,
       UserId: req.user.id
     })
 

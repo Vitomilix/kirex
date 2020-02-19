@@ -42,3 +42,8 @@
     #hira_form fieldset:not(:first-of-type) {
       display: none;
     }
+
+
+    #incident_form fieldset:not(:first-of-type) {
+      display: none;
+    }
