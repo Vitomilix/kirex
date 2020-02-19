@@ -78,7 +78,7 @@ module.exports = {
       // send successful sign up email
       await transporter.sendMail({
         to: email,
-        from: 'howzit@kirex',
+        from: 'howzit@kirex.mail',
         subject: 'Welcome to KirEx',
         html: `
           <p>Howzit ${name},</p>
@@ -144,11 +144,11 @@ module.exports = {
       // send a reset email to user with unique token 
       transporter.sendMail({
         to: req.body.email,
-        from: 'oh_bo@shoppingkwiens.com',
+        from: 'oh_no@kirex.mail',
         subject: 'Password reset',
         html: `
           <p>Eish ${user.name},</p>
-          <p>Have you forgotten your password? <br> Ok, we'll be nice!. Click<a href=${link}>this link</a>To reset your password</p>
+          <p>Have you forgotten your password? <br> Ok, we'll be nice!. Click <a href=${link}>this link</a>To reset your password</p>
         `
       })
     } catch (err) {
