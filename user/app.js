@@ -10,6 +10,7 @@ const passport = require('passport')
 const flash = require('connect-flash')
 const csrf = require('csurf')
 const mysql = require('mysql')
+const fileUpload = require('express-fileupload');
 
 const dbquery = mysql.createConnection ({
     host: 'localhost',
@@ -45,7 +46,6 @@ const errorController = require('./controllers/error')
 // Set up express-handlebars
 app.engine('handlebars', exphbs({ default: 'main' }))
 app.set('view engine', 'handlebars')
-
 // Include routers
 const homeRoutes = require('./routes/home')
 
@@ -78,6 +78,9 @@ app.use(csrfProtection)
 
 // use flash middleware
 app.use(flash())
+
+app.use(fileUpload());
+
 
 // Initialize Passport
 app.use(passport.initialize())

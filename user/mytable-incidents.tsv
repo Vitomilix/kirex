@@ -1,0 +1,4 @@
+id	division	incidentLocation	division_employee	events	date	injuries	downtime	cause	measures	imageOne	createdAt	updatedAt	UserId
+1	NULL	bfvcdxs	bvfcdxsza	nbfvcdsx	2020-02-11 00:00:00	hgtfrdes	2	tgfrdesw	ygtfrdesw	TEST.png	2020-02-20 08:37:52	2020-02-20 08:37:52	2
+2	NULL	ygtrfew	TGFRED	HFGFD	2020-02-06 00:00:00	FBVDC	9	GFDS	TRE		2020-02-20 08:41:55	2020-02-20 08:41:55	2
+3	DIVISION	5435	HYGTFRDE	HYGTFRED	2020-02-10 00:00:00	HGTFRDESW	0	GFDSA	GFDSA	TEST.png	2020-02-20 08:45:25	2020-02-20 08:45:25	1
