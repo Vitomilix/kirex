@@ -66,6 +66,8 @@ const port = 3000
 // add middle-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+
 // set up session
 app.use(session({
   secret: 'joifhjoweifoikwenfokerjnofmweakmndlew',

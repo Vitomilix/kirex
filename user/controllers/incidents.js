@@ -7,6 +7,7 @@ const Incidents = db.Incidents
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const { validationResult } = require('express-validator')
+const fileUpload = require('express-fileupload');
 module.exports = {
   getHome: async (req, res) => {
     try {
@@ -21,9 +22,31 @@ module.exports = {
   postNewIncident: async (req, res) => {
     //Handle input
     const {   date, division, incidentLocation, division_employee, events,  
-   injuries,  downtime, cause, measures, imageOne} = req.body
+   injuries,  downtime, cause, measures} = req.body
 
-   console.log(req.body);
+
+    // get timestamp
+
+    let today = new Date();
+    let time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = String(today.getMonth() + 1).padStart(2, '0');
+    let year = today.getFullYear();
+    let timestamp = time + "-" + year + "-" + month + "-" + day
+
+console.log(req.files);
+
+   let uploadedFile = req.files.imageOne;
+   let imageOne = uploadedFile.name;
+   let fileExtension = uploadedFile.mimetype.split('/')[1];
+    imageOne = timestamp + '.' + fileExtension;
+
+     uploadedFile.mv(`public/uploadedImages/${imageOne}`, (err ) => {
+                        if (err) {
+                            return res.status(500).send(err);
+                        }
+     });
+
    
     //Input validation
     const errors = validationResult(req)
@@ -37,6 +60,10 @@ module.exports = {
       })
     }
     
+
+
+
+
     const newRecord = new Incidents({
       date: date,
       division: division,

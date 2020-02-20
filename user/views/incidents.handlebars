@@ -1,12 +1,12 @@
 
   <div id="form" class="form-container position-relative shadow">
     
-  <form id="incident_form" action="/incidents" method="POST">
+  <form id="incident_form" action="/incidents?_csrf={{csrfToken}}" method="POST" enctype="multipart/form-data">
+ {{> message}}
   <div class="progress">
     <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
   <fieldset>
-      <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <h2>Step 1: General Information</h2>
     <div class="form-group">
     <label for="date">Date</label>
