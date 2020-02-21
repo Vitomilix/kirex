@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: supersecret
       DATABASE_HOST: db
   web:
-    build: ./user-web
+    build: ./web
     environment:
       DATABASE_HOST: db
       MYSQL_PORT: 3306
