@@ -466,9 +466,17 @@
 </div>
 
 
+<script type="text/javascript">
+var selected = new Array();
 
-<script>
-  
+$(document).ready(function() {
+
+  $("input:checkbox[name=type]:checked").each(function() {
+       selected.push($(this).val());
+  });
+
+});
+
 </script>
 
 <script>
