@@ -310,52 +310,52 @@
     <label for="hazards">Hazards</label>
   
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="noise" name="hazard[]" value="noise">
+                        <input type="checkbox" class="hazard" id="noise" value="noise">
                         <label for="noise"> Noise </label>
                     </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="dust" name="hazard[]" value="dust">
+                        <input type="checkbox" class="hazard" id="dust" value="dust">
                         <label for="dust"> Dust </label>
                     </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="heat" name="hazard[]" value="dust">
+                        <input type="checkbox" class="hazard" id="heat" value="heat">
                         <label for="heat"> Heat </label>
 </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="electricity" name="hazard[]" value="electricity">
+                        <input type="checkbox" class="hazard" id="electricity" value="electricity">
                         <label for="electricity"> Electricity </label>
 </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="gases" name="hazard[]" value="gases">
+                        <input type="checkbox" class="hazard" id="gases" value="gases">
                         <label for="gases"> Gases </label>
 </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="confinedSpaces" name="hazard[]" value="confined spaces">
+                        <input type="checkbox" class="hazard" id="confinedSpaces" value="confined spaces">
                         <label for="confinedSpaces"> Confined Spaces </label>
 </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="compressedAir" name="hazard[]" value="compressed air">
+                        <input type="checkbox" class="hazard" id="compressedAir" value="compressed air">
                         <label for="compressedAir"> Compressed Air </label>
 </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="movingMachinery" name="hazard[]" value="moving machinery">
+                        <input type="checkbox" class="hazard" id="movingMachinery" value="moving machinery">
                         <label for="movingMachinery"> Moving Machinery </label>
 </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="chemicals" name="hazard[]" value="chemicals">
+                        <input type="checkbox" class="hazard" id="chemicals" value="chemicals">
                         <label for="chemicals"> Chemicals </label>
 </div>
 <br>
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="mechanicalHandling" name="hazard[]" value="mechanical handling">
+                        <input type="checkbox" class="hazard" id="mechanicalHandling" value="mechanical handling">
                         <label for="mechanicalHandling"> Mechanical handling </label>
 </div>
   <div class="valid-feedback col-10 p-0">
@@ -366,7 +366,16 @@
       </div>
     </div>
 
-  
+  <div class="form-group">
+   
+    <input type="hidden" class="form-control" id="hazard" name="hazard" placeholder="Selected Hazards" required>
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
 
     <div class="form-group">
     <label for="otherHazard">Other Hazards not listed above, please specify</label>
@@ -382,27 +391,27 @@
       <div class="form-group">
     <label for="controlHazard">Control of Hazards</label>
       <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="elimination" name="controlHazard" value="elimination">
+                        <input type="checkbox" class=" hazardControl" id="elimination" value="elimination">
                         <label for="elimination"> Elimination </label>
 </div>
 <br>
   <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="substitution" name="controlHazard" value="substitution">
+                        <input type="checkbox" class=" hazardControl" id="substitution" value="substitution">
                         <label for="substitution"> Substitution </label>
 </div>
 <br>
   <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="engineeringControl" name="controlHazard" value="engineering control">
+                        <input type="checkbox" class=" hazardControl" id="engineeringControl" value="engineering control">
                         <label for="engineeringControl"> Engineering control </label>
 </div>
 <br>
   <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="training" name="controlHazard" value="training">
+                        <input type="checkbox" class=" hazardControl" id="training" value="training">
                         <label for="training"> Training </label>
 </div>
 <br>
   <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
-                        <input type="checkbox" class="styled" id="ppeControl" name="controlHazard" value="ppe">
+                        <input type="checkbox" class=" hazardControl" id="ppeControl"  value="ppe">
                         <label for="ppeControl"> PPE </label>
 </div>
   <div class="valid-feedback col-10 p-0">
@@ -413,7 +422,15 @@
       </div>
     </div>
     
-    
+    <div class="form-group">
+    <input type="hidden" class="form-control" id="controlHazard" name="controlHazard" placeholder="Selected Hazard control" required>
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
 
     <div class="form-group">
     <label for="controlHazardOther">Other means of Hazard Control not listed above, please specify</label>
@@ -467,14 +484,29 @@
 
 
 <script type="text/javascript">
-var selected = new Array();
-
 $(document).ready(function() {
+    $('.hazard').click(function(){
+      let hazardsList = "";
+      $('.hazard:checked').each(function(){
+        hazardsList+=$(this).val()+ ', ';
+      });
+      hazardsList = hazardsList.substring(0, hazardsList.length - 1);
+      $('#hazard').val(hazardsList);
+    });
+});
 
-  $("input:checkbox[name=type]:checked").each(function() {
-       selected.push($(this).val());
-  });
+</script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.hazardControl').click(function(){
+      let hazardControlList = "";
+      $('.hazardControl:checked').each(function(){
+        hazardControlList+=$(this).val()+ ', ';
+      });
+      hazardControlList = hazardControlList.substring(0, hazardControlList.length - 1);
+      $('#controlHazard').val(hazardControlList);
+    });
 });
 
 </script>
