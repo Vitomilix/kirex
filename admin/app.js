@@ -58,7 +58,7 @@ const incidentsRoutes = require('./routes/incidents')
 
 
 // Set up server related variable
-const port = 3000
+const port = 5001
 
 // add middle-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))

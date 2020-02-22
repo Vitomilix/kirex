@@ -27,7 +27,7 @@ module.exports = {
 
     let title = "Register User | KirEx"
     res.render('register', {
-      layout: 'forms',
+      layout: 'main',
       title: title,
       formCSS: true,
       formValidateJS: true
@@ -41,7 +41,7 @@ module.exports = {
     
     if (!errors.isEmpty()) {
       return res.status(422).render('register', {
-        layout: 'forms',
+        layout: 'main',
         formCSS: true,
         formValidateJS: true,
         errorMessages: errors.array(),
@@ -91,7 +91,7 @@ module.exports = {
     }
   },
   getLogin: (req, res) => {
-    let title = "Login to KirEx"
+    let title = "Login to KirEx Admin"
     res.render('login', {
       layout: 'main',
       bodyclass: 'bg-gradient-primary',
@@ -111,7 +111,8 @@ module.exports = {
   getReset: (req, res) => {
     let title = "Reset Password | KirEx"
     res.render('reset', {
-      layout: 'forms',
+      layout: 'main',
+      bodyclass: 'bg-gradient-primary',
       formCSS: true,
       title: title,
       formValidateJS: true,
@@ -167,7 +168,7 @@ module.exports = {
       // render to new password set up page
       let title = "New Password | Kirex"
       res.render('new-password', {
-        layout: 'forms',
+        layout: 'main',
         title: title,
         formCSS: true,
         formValidateJS: true,
@@ -186,7 +187,7 @@ module.exports = {
     let title = "Reset Password | KirEx"
     if (!errors.isEmpty()) {
       return res.status(422).render('new-password', {
-        layout: 'forms',
+        layout: 'main',
         title: title,
         formCSS: true,
         formValidateJS: true,
