@@ -70,12 +70,12 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="login.html">Login</a>
@@ -84,7 +84,7 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
+            <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
         </div>
       </li>
@@ -97,7 +97,7 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
@@ -163,7 +163,7 @@
               </div>
             </li>
 
-           
+        
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -171,7 +171,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
-                <img class="img-profile rounded-circle" src="https://ui-avatars.com/api/?name={{user.name}}"">
+                <img class="img-profile rounded-circle" src="https://ui-avatars.com/api/?name={{user.name}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -204,7 +204,87 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <h1 class="h3 mb-2 text-gray-800">HIRA RESULTS</h1>
+          <p class="mb-4">Due to the scope of the dataset, only a limited amount of data is visible. To view it all on a case by case basis, click on the <code>More info </code> Button. </p>
+     
+          <p class="mb-4">You can also generate an <code>Excel </code> file of all data by clicking on the <cite>Generate Report </cite>Button</p>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">View Results</h6>
+               <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Employee Number</th>
+                      <th>Name</th>
+                      <th>Project Number</th>
+                      <th>More Info</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Employee Number</th>
+                      <th>Name</th>
+                      <th>Project Number</th>
+                      <th>More Info</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    
+                    {{#each hiraResult}}
+                      <tr>
+                        <td>{{this.companyNumber}}</td>
+                        <td>{{this.name}}</td>
+                      <td>{{this.projectNumber}}</td>
+                    
+                         <td> <button class="btn btn-info" type="button" data-toggle="modal" data-target="#info{{this.id}}">
+              
+              <span class="pl-1 d-none d-sm-inline-block">More Info</span>
+            </button></td>
+                 
+                    </tr>
+                               <!--More info Modal-->
+            <div class="modal fade" id="info{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="More Info Modal"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-secondary font-weight-bold"><i
+                        class="fas fa-info-circle"></i> {{this.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-secondary">
+                    <span class="font-weight-bold">{{this.name}}</span>
+                    <br> <p><i class="fas fa-map-marker-alt"></i> {{this.lat}} , {{this.lon}}</p>
+                    <p></p><i class="fab fa-internet-explorer"></i> <a href = "{{this.website}}" target="_blank">{{this.website}}</a></p>
+                    <p></p><i class="far fa-clock"></i> {{this.id}}</p>
+                    <p></p><i class="fas fa-folder"></i> {{this.category}}</p>
+                    <p></p><i class="fas fa-road"></i> {{this.street}}</p>
+                    <p></p><i class="fas fa-envelope"></i> {{this.postalCode}}</p>
+                    <p><i class="fas fa-map"></i> <a href="map?lat={{this.lat}}&lon={{this.lon}}&radius={{this.radiusToPoi}}" target="_blank">View this Premises on a map</a></p>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok, Got it</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+                    {{/each}}
+                  </tbody>
+           
+                </table>
+                      
+        
+              </div>
+            </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -261,3 +341,10 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>

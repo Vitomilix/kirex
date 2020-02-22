@@ -11,10 +11,17 @@ const Op = Sequelize.Op
 module.exports = {
   getHome: async (req, res) => {
     try {
-   
-   let title = "Submit a new Hira | Kirex"
+
+      const hiraResult = await Hira.findAll({
+          
+      })
+
+      console.log(hiraResult.dataValues);
       
-      res.render('hira', { layout: 'main', formCSS: true, title})
+   
+   let title = "View Hira results | Kirex"
+      
+      res.render('hira', { layout: 'main', formCSS: true, title, hiraResult})
     } catch (err) {
       return console.log(err)
     }
