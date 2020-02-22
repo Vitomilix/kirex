@@ -1,11 +1,8 @@
 FROM node:8
-
-WORKDIR /usr/src/app
-
+WORKDIR /app
 COPY package*.json ./
-
 RUN npm install
-
 COPY . .
-
-CMD ["npm", "start"]
+CMD npx sequelize db:migrate
+CMD npm start
+EXPOSE 3000

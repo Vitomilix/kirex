@@ -2,9 +2,9 @@
 module.exports = (sequelize, DataTypes) => {
   const Hira = sequelize.define('Hira', {
     name: DataTypes.STRING,
+    email: DataTypes.STRING,
     companyNumber: DataTypes.INTEGER,
     taskActivity: DataTypes.STRING,
-    dateDone: DataTypes.DATE,
     projectNumber: DataTypes.STRING,
     area: DataTypes.STRING,
     doneBefore: DataTypes.INTEGER,

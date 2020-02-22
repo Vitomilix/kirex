@@ -10,8 +10,9 @@ const passport = require('passport')
 const flash = require('connect-flash')
 const csrf = require('csurf')
 const mysql = require('mysql')
+const fileUpload = require('express-fileupload');
 
-var dbquery = mysql.createConnection({
+const dbquery = mysql.createConnection ({
     host: 'localhost',
     user: 'root',
     password: '12345678',
@@ -32,9 +33,9 @@ if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 // Include models
 const db = require('./models')
 const User = db.User
-const Admin = db.Admin
-const Hira = db.Hira
-const Incidents = db.Incidents
+const Search = db.Search
+const Shop = db.Shop
+const Poi = db.Poi
 
 // Initialize csrf protection middleware
 const csrfProtection = csrf()
@@ -45,12 +46,14 @@ const errorController = require('./controllers/error')
 // Set up express-handlebars
 app.engine('handlebars', exphbs({ default: 'main' }))
 app.set('view engine', 'handlebars')
-
 // Include routers
 const homeRoutes = require('./routes/home')
-const incidentsRoutes = require('./routes/incidents')
-const hiraRoutes = require('./routes/hira')
+
+
+
 const userRoutes = require('./routes/user')
+const hiraRoutes = require('./routes/hira')
+const incidentsRoutes = require('./routes/incidents')
 
 
 
@@ -59,6 +62,8 @@ const port = 3000
 
 // add middle-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))
+
+
 
 // set up session
 app.use(session({
@@ -72,6 +77,9 @@ app.use(csrfProtection)
 
 // use flash middleware
 app.use(flash())
+
+app.use(fileUpload());
+
 
 // Initialize Passport
 app.use(passport.initialize())
@@ -104,15 +112,19 @@ app.use(methodOverride('_method'))
 app.use(express.static('public'))
 
 // home route
-app.use('/admin', homeRoutes)
+app.use('/', homeRoutes)
 
-app.use('/admin/hira', hiraRoutes)
-app.use('/admin/incidents', incidentsRoutes)
+app.use('/hira', hiraRoutes)
+app.use('/incidents', incidentsRoutes)
+
+
+
+
+
+
 
 // user routes
-app.use('/admin/users', userRoutes)
-
-
+app.use('/users', userRoutes)
 
 
 

@@ -1,119 +1,92 @@
-// Include modules
+// Include models
+//const { getFormatedMonth, getChartData } = require('../date-process')
 const { validationResult } = require('express-validator')
-
 // Include models
 const db = require('../models')
-const Shop = db.Shop
+const Hira = db.Hira
+
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 module.exports = {
-getShop: async (req, res) => {
+  getHome: async (req, res) => {
     try {
-      // Find all shops
-      const records = await Shop.findAll({
-        where: { UserId: req.user.id },
-        order: [['id', 'ASC']]
-          
-      })
-    
+   
+   let title = "Submit a new Hira | Kirex"
       
-
-  
-      // check if any record is found
-      const isEmptyRecord = records.length ? false : true
-     
-      
-  
-      res.render('shop', { indexCSS: true, records,isEmptyRecord })
+      res.render('hira', { layout: 'main', formCSS: true, title})
     } catch (err) {
       return console.log(err)
     }
   },
 
-  getNewShop: (req, res) => {
-    res.render('shopform', { formCSS: true, formValidateJS: true })
-  },
-  postNewShop: async (req, res) => {
-    // Handle input
-    const {   lat, lon, name, website, tradingHours, category, street, postalCode } = req.body
-    //Validation
+  postNewHira: async (req, res) => {
+    //Handle input
+    console.log(req.body);
+    console.log(validationResult);
+    
+    const {  name, email, companyNumber,taskActivity, projectNumber, area,
+      doneBefore, haveChangesMade, electricalEquipment,
+      safeAccess,machineGuarding, correctEquipment,preinspectedEquipment,
+         sds, controlToxic, fumeSystems,
+          ppe, hazard, otherHazard, controlHazard, controlHazardOther, monitorProcess,
+          additionalComments } = req.body
+    //Input validation
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-      return res.status(422).render('shopform', {
+      return res.status(422).render('hira', {
         formCSS: true,
-        record: {   lat, lon, name, website, tradingHours, category, street, postalCode },
+        record: { name, email, companyNumber,taskActivity, projectNumber, area,
+      doneBefore, haveChangesMade, electricalEquipment,
+      safeAccess,machineGuarding, correctEquipment,preinspectedEquipment,
+         sds, controlToxic, fumeSystems,
+          ppe, hazard, otherHazard, controlHazard, controlHazardOther, monitorProcess,
+          additionalComments},
         formValidateJS: true,
         errorMessages: errors.array()
       })
     }
     
-    const newRecord = new Shop({
-      lat: lat,
-      lon: lon,
+    const newRecord = new Hira({
       name: name,
-      website: website,
-      tradingHours: tradingHours,
-      category: category,
-      street: street,
-      postalCode: postalCode,
+      email: email,
+      companyNumber: companyNumber,
+      taskActivity: taskActivity,
+      projectNumber: projectNumber,
+      area: area,
+      doneBefore: doneBefore,
+      haveChangesMade: haveChangesMade,
+      electricalEquipment: electricalEquipment,
+      safeAccess: safeAccess,
+      machineGuarding: machineGuarding,
+      correctEquipment: correctEquipment,
+      preinspectedEquipment: preinspectedEquipment,
+      sds: sds,
+      controlToxic: controlToxic,
+      fumeSystems: fumeSystems,
+      ppe: ppe,
+      hazard: hazard,
+      otherHazard: otherHazard,
+      controlHazard: controlHazard,
+      controlHazardOther: controlHazardOther,
+      monitorProcess: monitorProcess,
+      additionalComments: additionalComments,
       UserId: req.user.id
     })
 
     try {
-      // Save to the data base
+
+      
+      // Save point of interest
       await newRecord.save()
-      res.redirect('/admin/shop')
+  
+      
+      req.flash('success', 'Your Hira was logged')
+      res.redirect('/')
     } catch (err) {
       console.log(err)
     }
   },
-  getEditShop: async (req, res) => {
-    try {
-      // Find shop based on ID
-      const record = await Shop.findOne({ where: { id: req.params.id, UserId: req.user.id } })
-      res.render('shopform', { formCSS: true, record, formValidateJS: true, isEditMode: true })
-    } catch (err) {
-      console.log(err)
-    }
-  },
-  postEditShop: async (req, res) => {
-   // Handle input
-    const {   lat, lon, name, website, tradingHours, category, street, postalCode } = req.body
-    // Validation
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-      return res.status(422).render('shopform', {
-        formCSS: true,
-        record: { lat, lon, name, website, tradingHours, category, street, postalCode, _id: req.params.id },
-        formValidateJS: true,
-        isEditMode: true,
-        errorMessages: errors.array()
-      })
-    }
-
-    try {
-      // Find shop based on ID
-      const record = await Shop.findOne({ where: { id: req.params.id, UserId: req.user.id } })
-
-      // Update/edit
-      record.lat = lat
-      record.lon = lon
-      record.name = name
-      record.website = website
-      record.tradingHours = tradingHours
-      record.category = category
-      record.street = street
-      record.postalCode = postalCode
-
-      // Save to the database
-      await record.save()
-      res.redirect('/admin/shop')
-
-    } catch (err) {
-      console.log(err)
-    }
-  },
-  deleteShop: (req, res) => {
-    Shop.destroy({ where: { id: req.params.id, UserId: req.user.id } })
-      .then(record => res.redirect('/admin/shop'))
-  }
 }
+
+  

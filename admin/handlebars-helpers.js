@@ -24,3 +24,15 @@ Handlebars.registerHelper('getInputDate', function (date, options) {
   const month = date.getMonth() === 11 ? 1 : date.getMonth() + 1
   return `${date.getFullYear()}-${month.toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
 })
+
+
+Handlebars.registerHelper('switch', function(value, options) {
+  this.switch_value = value;
+  return options.fn(this);
+});
+
+Handlebars.registerHelper('case', function(value, options) {
+  if (value == this.switch_value) {
+    return options.fn(this);
+  }
+});
