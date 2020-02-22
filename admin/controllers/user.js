@@ -29,6 +29,7 @@ module.exports = {
     res.render('register', {
       layout: 'main',
       title: title,
+       bodyclass: 'bg-gradient-primary',
       formCSS: true,
       formValidateJS: true
     })
@@ -106,7 +107,7 @@ module.exports = {
     // show logout success message
     req.flash('success', 'You have been logged out, Cheers')
     // Redirect to homepage
-    res.redirect('/')
+    res.redirect('/users/login')
   },
   getReset: (req, res) => {
     let title = "Reset Password | KirEx"
@@ -170,6 +171,7 @@ module.exports = {
       res.render('new-password', {
         layout: 'main',
         title: title,
+        bodyclass: 'bg-gradient-primary',
         formCSS: true,
         formValidateJS: true,
         userId: user.id,

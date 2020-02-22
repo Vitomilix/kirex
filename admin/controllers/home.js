@@ -4,9 +4,10 @@
 // Include models
 const db = require('../models')
 const Hira = db.Hira
-const Poi = db.Poi
+const Incidents = db.Incidents
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
+const moment = require('moment');
 
 module.exports = {
   getMapData: async (req, res) => {
@@ -23,24 +24,38 @@ module.exports = {
 
   getAllShops: async (req, res) => {
     try {
-      // // populate dropdown
-      // const records = await Shop.findAll({
-      //   distinct: true,
-      //   attributes: [['category', 'category']],
-        
-      //   order: [['id', 'DESC']]
+
+     const countHira = await Hira.findAndCountAll({
           
-      // })
-    
+      })
+
+       const countIncident = await Incidents.findAndCountAll({
+          
+      })
       
 
+        
+      const hiraLastMonth = await Hira.findAndCountAll({
+  where: {
+    createdAt: {
+      [Op.gte]: moment().subtract(30, 'days').toDate()
+    }
+  }
+})
+
+ const incidentsLastMonth = await Incidents.findAndCountAll({
+  where: {
+    createdAt: {
+      [Op.gte]: moment().subtract(30, 'days').toDate()
+    }
+  }
+})
   
-      // // check if any record is found
-      // const isEmptyRecord = records.length ? false : true
       
     let title = "Welcome to KirEx Admin"
   
-      res.render('index', { indexCSS: true,
+      res.render('index', { indexCSS: true, countHira,countIncident, 
+      hiraLastMonth,incidentsLastMonth,
       layout: "main",
       bodyclass: 'position-relative',
       title: title})
