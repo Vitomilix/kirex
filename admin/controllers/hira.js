@@ -16,7 +16,7 @@ module.exports = {
           
       })
 
-      console.log(hiraResult.dataValues);
+
       
    
    let title = "View Hira results | Kirex"

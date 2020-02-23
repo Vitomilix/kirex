@@ -51,7 +51,7 @@ const homeRoutes = require('./routes/home')
 
 
 
-const userRoutes = require('./routes/user')
+const userRoutes = require('./routes/admin')
 const hiraRoutes = require('./routes/hira')
 const incidentsRoutes = require('./routes/incidents')
 

@@ -11,7 +11,7 @@ const sendgridTransport = require('nodemailer-sendgrid-transport')
 
 // Include models
 const db = require('../models')
-const User = db.User
+const Admin = db.Admin
 
 //  set up email service
 const transporter = nodemailer.createTransport(sendgridTransport({
@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 module.exports = {
   getRegister: (req, res) => {
 
-    let title = "Register User | KirEx"
+    let title = "Register Admin | KirEx"
     res.render('register', {
       layout: 'main',
       title: title,
@@ -46,15 +46,15 @@ module.exports = {
         formCSS: true,
         formValidateJS: true,
         errorMessages: errors.array(),
-        user: { name,employeeNumber, email, password, rePassword }
+        admin: { name,employeeNumber, email, password, rePassword }
       })
     }
 
     try {
       // Check if email exists in data base
-      const user = await User.findOne({ where: { email: email } })
+      const admin = await Admin.findOne({ where: { email: email } })
       // Email exists
-      if (user) {
+      if (admin) {
         req.flash('error', 'You have already registered please login or reset your password if you forgot it')
         return res.redirect('/users/login')
       }
@@ -64,7 +64,7 @@ module.exports = {
       const hash = await bcrypt.hash(password, salt)
 
       // store user into database
-      await User.create({
+      await Admin.create({
         name: name,
         employeeNumber: employeeNumber,
         email: email,
@@ -126,20 +126,20 @@ module.exports = {
       const token = buffer.toString('hex')
 
       // Store token in data base with user wishing to reset
-      const user = await User.findOne({ where: { email: req.body.email } })
+      const admin = await Admin.findOne({ where: { email: req.body.email } })
 
       // no user found
-      if (!user) {
+      if (!admin) {
         req.flash('error', 'Eish, your email was not found')
         return res.redirect('/users/reset')
       }
 
       // user is found, add token
-      user.resetToken = token
+      admin.resetToken = token
       // token expired in 24 hours
-      user.resetTokenExpiration = Date.now() + 86400000
+      admin.resetTokenExpiration = Date.now() + 86400000
       // save token and expiration time
-      await user.save()
+      await admin.save()
       // redirect back to login page
       res.redirect('/users/login')
       
@@ -150,7 +150,7 @@ module.exports = {
         from: 'oh_no@kirex.mail',
         subject: 'Password reset',
         html: `
-          <p>Eish ${user.name},</p>
+          <p>Eish ${admin.name},</p>
           <p>Have you forgotten your password? <br> Ok, we'll be nice!. Click <a href=${link}>this link</a>To reset your password</p>
         `
       })
@@ -165,7 +165,7 @@ module.exports = {
 
     try {
       // find the user in the database
-      const user = await User.findOne({ where: { resetToken: token, resetTokenExpiration: { [Op.gt]: Date.now() } } })
+      const admin = await Admin.findOne({ where: { resetToken: token, resetTokenExpiration: { [Op.gt]: Date.now() } } })
       // render to new password set up page
       let title = "New Password | Kirex"
       res.render('new-password', {
@@ -174,7 +174,7 @@ module.exports = {
         bodyclass: 'bg-gradient-primary',
         formCSS: true,
         formValidateJS: true,
-        userId: user.id,
+        adminId: admin.id,
         passwordToken: token
       })
     } catch (err) {
@@ -183,7 +183,7 @@ module.exports = {
     }
   },
   postNewPassword: async (req, res) => {
-    const { password, userId, passwordToken } = req.body
+    const { password, adminId, passwordToken } = req.body
     // Validation
     const errors = validationResult(req)
     let title = "Reset Password | KirEx"
@@ -193,7 +193,7 @@ module.exports = {
         title: title,
         formCSS: true,
         formValidateJS: true,
-        userId: user.id,
+        adminId: admin.id,
         passwordToken: token
       })
     }
@@ -201,15 +201,15 @@ module.exports = {
     // form passed validation
     try {
       // find user
-      const user = await User.findOne({ resetToken: passwordToken, resetTokenExpiration: { [Op.gt]: Date.now() }, id: userId })
+      const admin = await Admin.findOne({ resetToken: passwordToken, resetTokenExpiration: { [Op.gt]: Date.now() }, id: adminId })
       // hash new password
       const salt = await bcrypt.genSalt(10)
       const hash = await bcrypt.hash(password, salt)
       // update password and clear token
-      user.password = hash
-      user.resetToken = null
-      user.resetTokenExpiration = null
-      await user.save()
+      admin.password = hash
+      admin.resetToken = null
+      admin.resetTokenExpiration = null
+      await admin.save()
       // redirect back to login page
       res.redirect('/users/login')
       req.flash('success', 'Great your password is reset login again please.')

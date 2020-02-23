@@ -4,7 +4,7 @@ const { body } = require('express-validator')
 const passport = require('passport')
 
 // Include controller
-const userController = require('../controllers/user')
+const userController = require('../controllers/admin')
 
 // signup page
 router.get('/register', userController.getRegister)

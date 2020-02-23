@@ -2,16 +2,26 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+let hiraAmount = document.currentScript.getAttribute('hira');
+
+let incidentAmount = document.currentScript.getAttribute('incidents');
+
+let totalSubmissions = +hiraAmount + +incidentAmount;
+let hiraPercentage = (hiraAmount/totalSubmissions) * 100;
+let incidentPercentage = (incidentAmount/totalSubmissions) * 100;
+
+hiraPercentage = Math.round( hiraPercentage * 10 ) / 10;
+incidentPercentage = Math.round( incidentPercentage * 10 ) / 10;
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social", "other"],
+    labels: ["Hira Submissions: (" + hiraPercentage + "%) " , "Incidents: (" + incidentPercentage + "%)"],
     datasets: [{
-      data: [50, 30, 15, 5],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#e74a3b'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#e74a3b'],
+      data: [hiraAmount, incidentAmount],
+      backgroundColor: ['#4e73df', '#e74a3b'],
+      hoverBackgroundColor: ['#2e59d9', '#e94a3b', '#2c9faf', '#e74a3b'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },

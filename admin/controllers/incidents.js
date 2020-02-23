@@ -11,10 +11,15 @@ const fileUpload = require('express-fileupload');
 module.exports = {
   getHome: async (req, res) => {
     try {
+
+
+      const IncidentResults = await Incidents.findAll({
+          
+      })
    
-   let title = "Submit a new Incident | Kirex"
+   let title = "View Incidents | Kirex"
       
-      res.render('incidents', { layout: 'main', formCSS: true, title})
+      res.render('incidents', { layout: 'main', formCSS: true, title,IncidentResults })
     } catch (err) {
       return console.log(err)
     }

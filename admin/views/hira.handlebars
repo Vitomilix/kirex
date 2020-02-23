@@ -264,7 +264,7 @@
                         <td>{{this.name}}</td>
                       <td>{{this.projectNumber}}</td>
                     
-                         <td> <button class="btn btn-info" type="button" data-toggle="modal" data-target="#info{{this.id}}">
+                         <td> <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#info{{this.id}}">
               
               <span class="pl-1 d-none d-sm-inline-block">More Info</span>
             </button></td>
@@ -276,7 +276,7 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title text-secondary font-weight-bold"><i
+                    <h5 class="modal-title text-dark font-weight-bold"><i
                         class="fas fa-info-circle"></i> Hira submitted by {{this.name}} ({{this.companyNumber}})</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
@@ -284,27 +284,27 @@
                   </div>
                   <div class="hiraRes modal-body text-dark">
                     <span class=" font-weight-bold">Submitted on</span>  <span class=" trimText font-weight-bold">{{this.createdAt}}</span> 
-                    <br> <p><i class="fas fa-circle  text-gray-50"></i> Project Number: {{this.projectNumber}}</p>
+                    <br> <br> <p><i class="fas fa-circle  text-gray-50"></i> Project Number: <b>{{this.projectNumber}}</b></p>
                      <p><i class="fas fa-circle  text-gray-50"></i> Area: {{this.area}}</p>
                      <hr>
-                     <p><i class="fas fa-circle  text-gray-50"></i> Has this task been done before: {{#getText this.doneBefore}}{{/getText}}</p>
-                     <p><i class="fas fa-circle  text-gray-50"></i> Have changes been made to the standard process: {{#getText this.haveChangesMade}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Safe access to work area - clean and Tidy: {{#getText this.safeAccess}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Electrical Equipment in good condition: {{#getText this.electricalEquipment}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Is Machine Guarding adequate: {{#getText this.machineGuarding}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> All tools and Equipment pre-inspected: {{#getText this.preinspectedEquipment}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Correct Tools/equipment Available: {{#getText this.correctEquipment}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Have the SDS been read and reviewed: {{#getText this.sds}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Controls for toxic gasses/fumes in place: {{#getText this.controlToxic}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Are Fume cupbords/extraction systems Working: {{#getText this.fumeSystems}}{{/getText}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Correct PPE valiable and used: {{#getText this.ppe}}{{/getText}}</p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Has this task been done before: <b>{{#getText this.doneBefore}}{{/getText}}</b></p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Have changes been made to the standard process: <b>{{#getText this.haveChangesMade}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Safe access to work area - clean and Tidy: <b>{{#getText this.safeAccess}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Electrical Equipment in good condition: <b>{{#getText this.electricalEquipment}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Is Machine Guarding adequate: <b>{{#getText this.machineGuarding}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> All tools and Equipment pre-inspected: <b>{{#getText this.preinspectedEquipment}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Correct Tools/equipment Available: <b>{{#getText this.correctEquipment}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Have the SDS been read and reviewed: <b>{{#getText this.sds}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Controls for toxic gasses/fumes in place: <b>{{#getText this.controlToxic}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Are Fume cupbords/extraction systems Working: <b>{{#getText this.fumeSystems}}{{/getText}}</b></p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Correct PPE valiable and used: <b>{{#getText this.ppe}}{{/getText}}</b></p>
                     <hr>
-                     <p><i class="fas fa-circle  text-gray-50"></i> Hazards: {{this.hazard}}</p>
-                     <p><i class="fas fa-circle  text-gray-50"></i> Other Hazards: {{this.otherHazard}}</p>
-                    <p><i class="fas fa-circle  text-gray-50"></i> Control of Hazard: {{this.controlHazard}}</p>
-                     <p><i class="fas fa-circle  text-gray-50"></i> Other means of Hazard Control: {{this.otherHazardControl}}</p>
-                      <p><i class="fas fa-circle  text-gray-50"></i> Monitor the Process: {{#getText this.monitorProcess}}{{/getText}}</p>
-                       <p><i class="fas fa-circle  text-gray-50"></i> Additional Comments: {{this.additionalComments}}</p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Hazards: <b>{{this.hazard}}</b></p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Other Hazards: <b>{{this.otherHazard}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Control of Hazard: {{this.controlHazard}}</b></p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Other means of Hazard Control: <b>{{this.otherHazardControl}}</b></p>
+                      <p><i class="fas fa-circle  text-gray-50"></i> Monitor the Process: <b>{{#getText this.monitorProcess}}{{/getText}}</b></p>
+                       <p><i class="fas fa-circle  text-gray-50"></i> Additional Comments: <b>{{this.additionalComments}}</b></p>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok, Got it</button>
                     
