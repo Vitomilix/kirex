@@ -8,6 +8,13 @@ Handlebars.registerHelper('getIcon', function (category, options) {
           : `<i class="fas fa-pen text-success"></i>`
 })
 
+
+Handlebars.registerHelper('getText', function (value, options) {
+  return value === 1 || value === '1' ? `Yes`
+    : value === 0 || value === '0'? `No`
+      : value === 2 ? `N/A`
+          : `No Data`
+})
 Handlebars.registerHelper('isSelected', function (selectedOption, thisOption, options) {
   return (selectedOption === thisOption) ? 'selected' : ''
 })

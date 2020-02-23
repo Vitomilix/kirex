@@ -1,5 +1,14 @@
 <div id="wrapper">
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+ <style>
+   div.hiraRes {
+  
+  overflow-y: scroll;
+}
+ </style>  
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.15.5/dist/xlsx.full.min.js"></script>
+   <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+   
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -212,14 +221,14 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">View Results</h6>
-               <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+           <button id="button-a" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> <i class="fas fa-download fa-sm text-white-50"> </i> Generate Report</button>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Employee Number</th>
+                      <th>Date/Time</th>
                       <th>Name</th>
                       <th>Project Number</th>
                       <th>More Info</th>
@@ -227,7 +236,7 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Employee Number</th>
+                      <th>Date/Time</th>
                       <th>Name</th>
                       <th>Project Number</th>
                       <th>More Info</th>
@@ -236,8 +245,22 @@
                   <tbody>
                     
                     {{#each hiraResult}}
+                     <script type="text/javascript">
+
+
+        $(document).ready(function () { //
+            $(".trimText").each(function () {
+                var maxwidth = 25;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() + ' ');
+                }
+            });
+        });
+    </script>
+
                       <tr>
-                        <td>{{this.companyNumber}}</td>
+                        <td class="trimText">{{this.createdAt}}</td>
                         <td>{{this.name}}</td>
                       <td>{{this.projectNumber}}</td>
                     
@@ -254,20 +277,34 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title text-secondary font-weight-bold"><i
-                        class="fas fa-info-circle"></i> {{this.name}}</h5>
+                        class="fas fa-info-circle"></i> Hira submitted by {{this.name}} ({{this.companyNumber}})</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body text-secondary">
-                    <span class="font-weight-bold">{{this.name}}</span>
-                    <br> <p><i class="fas fa-map-marker-alt"></i> {{this.lat}} , {{this.lon}}</p>
-                    <p></p><i class="fab fa-internet-explorer"></i> <a href = "{{this.website}}" target="_blank">{{this.website}}</a></p>
-                    <p></p><i class="far fa-clock"></i> {{this.id}}</p>
-                    <p></p><i class="fas fa-folder"></i> {{this.category}}</p>
-                    <p></p><i class="fas fa-road"></i> {{this.street}}</p>
-                    <p></p><i class="fas fa-envelope"></i> {{this.postalCode}}</p>
-                    <p><i class="fas fa-map"></i> <a href="map?lat={{this.lat}}&lon={{this.lon}}&radius={{this.radiusToPoi}}" target="_blank">View this Premises on a map</a></p>
+                  <div class="hiraRes modal-body text-dark">
+                    <span class=" font-weight-bold">Submitted on</span>  <span class=" trimText font-weight-bold">{{this.createdAt}}</span> 
+                    <br> <p><i class="fas fa-circle  text-gray-50"></i> Project Number: {{this.projectNumber}}</p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Area: {{this.area}}</p>
+                     <hr>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Has this task been done before: {{#getText this.doneBefore}}{{/getText}}</p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Have changes been made to the standard process: {{#getText this.haveChangesMade}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Safe access to work area - clean and Tidy: {{#getText this.safeAccess}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Electrical Equipment in good condition: {{#getText this.electricalEquipment}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Is Machine Guarding adequate: {{#getText this.machineGuarding}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> All tools and Equipment pre-inspected: {{#getText this.preinspectedEquipment}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Correct Tools/equipment Available: {{#getText this.correctEquipment}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Have the SDS been read and reviewed: {{#getText this.sds}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Controls for toxic gasses/fumes in place: {{#getText this.controlToxic}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Are Fume cupbords/extraction systems Working: {{#getText this.fumeSystems}}{{/getText}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Correct PPE valiable and used: {{#getText this.ppe}}{{/getText}}</p>
+                    <hr>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Hazards: {{this.hazard}}</p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Other Hazards: {{this.otherHazard}}</p>
+                    <p><i class="fas fa-circle  text-gray-50"></i> Control of Hazard: {{this.controlHazard}}</p>
+                     <p><i class="fas fa-circle  text-gray-50"></i> Other means of Hazard Control: {{this.otherHazardControl}}</p>
+                      <p><i class="fas fa-circle  text-gray-50"></i> Monitor the Process: {{#getText this.monitorProcess}}{{/getText}}</p>
+                       <p><i class="fas fa-circle  text-gray-50"></i> Additional Comments: {{this.additionalComments}}</p>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok, Got it</button>
                     
@@ -331,6 +368,43 @@
       </div>
     </div>
   </div>
+{{!-- create XLSX Report --}}
+
+<script data="{{hiraResult}}" >
+  let data = document.currentScript.getAttribute('data');
+  console.log(data)
+        let wb = XLSX.utils.book_new();
+        let currTimeStamp = new Date();
+let dd = String(currTimeStamp.getDate()).padStart(2, '0');
+let mm = String(currTimeStamp.getMonth() + 1).padStart(2, '0'); 
+let yyyy = currTimeStamp.getFullYear();
+
+currTimeStamp = dd + '-' + mm + '-' + yyyy;
+        wb.Props = {
+                Title: "Hira Export",
+                Subject: "Hira Export",
+                Author: "Vitomilix KirEx",
+                CreatedDate: currTimeStamp
+        };
+        
+        wb.SheetNames.push("Hira Export");
+        var ws_data = [["some role", 45.5], ["another role", 36.4], ["role three", 9.1], ["role four", 9.1]];
+        var ws = XLSX.utils.aoa_to_sheet(ws_data);
+        wb.Sheets["Hira Export"] = ws;
+        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+        function s2ab(s) {
+  
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+                
+        }
+        $("#button-a").click(function(){
+                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'hira-export-' + currTimeStamp + '.xlsx');
+        });
+  
+</script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
