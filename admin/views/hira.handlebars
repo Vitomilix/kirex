@@ -370,26 +370,34 @@
   </div>
 {{!-- create XLSX Report --}}
 
-<script data="{{hiraResult}}" >
-  let data = document.currentScript.getAttribute('data');
-  console.log(data)
-        let wb = XLSX.utils.book_new();
-        let currTimeStamp = new Date();
-let dd = String(currTimeStamp.getDate()).padStart(2, '0');
-let mm = String(currTimeStamp.getMonth() + 1).padStart(2, '0'); 
-let yyyy = currTimeStamp.getFullYear();
 
-currTimeStamp = dd + '-' + mm + '-' + yyyy;
+
+
+<script data="{{hiraResultRawString}}">
+  let data = document.currentScript.getAttribute('data');
+
+let jsonData = JSON.parse(data);
+
+
+
+let today = new Date();
+let day = String(today.getDate()).padStart(2, '0');
+let month = String(today.getMonth() + 1).padStart(2, '0'); 
+let year = today.getFullYear();
+
+let filename = "Hira-Export-" + day + "-" + month + "-" + year + ".xlsx";
+
+        var wb = XLSX.utils.book_new();
         wb.Props = {
                 Title: "Hira Export",
-                Subject: "Hira Export",
-                Author: "Vitomilix KirEx",
-                CreatedDate: currTimeStamp
+                Subject: "Export of Hira Records",
+                Author: "KirEx",
+                CreatedDate: new Date(year,month,day)
         };
         
         wb.SheetNames.push("Hira Export");
-        var ws_data = [["some role", 45.5], ["another role", 36.4], ["role three", 9.1], ["role four", 9.1]];
-        var ws = XLSX.utils.aoa_to_sheet(ws_data);
+        var ws_data = [['hello' , 1]]; ;
+       var ws = XLSX.utils.json_to_sheet(jsonData);
         wb.Sheets["Hira Export"] = ws;
         var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
         function s2ab(s) {
@@ -401,10 +409,11 @@ currTimeStamp = dd + '-' + mm + '-' + yyyy;
                 
         }
         $("#button-a").click(function(){
-                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'hira-export-' + currTimeStamp + '.xlsx');
+                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), filename);
         });
   
 </script>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>

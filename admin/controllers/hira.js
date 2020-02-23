@@ -13,15 +13,29 @@ module.exports = {
     try {
 
       const hiraResult = await Hira.findAll({
-          
+          order: [['id', 'DESC']]
       })
+
+
+      const hiraResultRaw = await Hira.findAll({
+        attributes: ['name', 'email', 'companyNumber','taskActivity', 'projectNumber', 'area',
+      'doneBefore', 'haveChangesMade', 'electricalEquipment',
+      'safeAccess','machineGuarding', 'correctEquipment','preinspectedEquipment',
+         'sds', 'controlToxic', 'fumeSystems',
+          'ppe', 'hazard', 'otherHazard', 'controlHazard', 'controlHazardOther', 'monitorProcess',
+          'additionalComments' ],
+          raw: true
+      })
+    let hiraResultRawString = JSON.stringify(hiraResultRaw); 
+
+
 
 
       
    
    let title = "View Hira results | Kirex"
       
-      res.render('hira', { layout: 'main', formCSS: true, title, hiraResult})
+      res.render('hira', { layout: 'main', formCSS: true, title, hiraResult, hiraResultRawString})
     } catch (err) {
       return console.log(err)
     }
@@ -29,8 +43,7 @@ module.exports = {
 
   postNewHira: async (req, res) => {
     //Handle input
-    console.log(req.body);
-    console.log(validationResult);
+
     
     const {  name, email, companyNumber,taskActivity, projectNumber, area,
       doneBefore, haveChangesMade, electricalEquipment,
