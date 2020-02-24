@@ -15,12 +15,12 @@
     <div class="form-group row ml-1 mr-4 justify-content-end">
       <label for="email" class="col-3 col-form-label text-right">Email*</label>
       <input type="email" name="email" id="email" class="col-9 form-control" value="{{user.email}}"
-        pattern="^\S+@\w+\.\w+$" required>
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" required>
       <div class="valid-feedback col-9 p-0">
         Looks good!
       </div>
       <div class="invalid-feedback col-9 p-0">
-        The email must be of the format shopping@kwiens.com
+        The email must be of the format howzit@mintek.co.za
       </div>
     </div>
     <div class="row ml-1 mr-4">
