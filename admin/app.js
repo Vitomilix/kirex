@@ -11,7 +11,7 @@ const flash = require('connect-flash')
 const csrf = require('csurf')
 const mysql = require('mysql')
 const fileUpload = require('express-fileupload');
-
+const isAuthenticated = require('./config/auth')
 const dbquery = mysql.createConnection ({
     host: 'localhost',
     user: 'root',
@@ -54,11 +54,12 @@ const homeRoutes = require('./routes/home')
 const userRoutes = require('./routes/admin')
 const hiraRoutes = require('./routes/hira')
 const incidentsRoutes = require('./routes/incidents')
+const {getFilteredHira} = require('./routes/filterHira');
 
 
 
 // Set up server related variable
-const port = 5001
+const port = 3001
 
 // add middle-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -115,6 +116,9 @@ app.use(express.static('public'))
 app.use('/', homeRoutes)
 
 app.use('/hira', hiraRoutes)
+
+app.get('/filterHira' , isAuthenticated, getFilteredHira)
+
 app.use('/incidents', incidentsRoutes)
 
 

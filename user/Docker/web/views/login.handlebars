@@ -1,3 +1,5 @@
+
+
 <div class="form-container position-relative shadow">
   <form action="/users/login" method="post" class="needs-validation" novalidate>
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
@@ -12,20 +14,20 @@
     <!--Display error message-->
     {{> message}}
     <!--From input-->
-    <div class="form-group row ml-1 mr-4 justify-content-end">
-      <label for="email" class="col-3 col-form-label text-right">Email*</label>
-      <input type="email" name="email" id="email" class="col-9 form-control" value="{{user.email}}"
+    <div class="form-group justify-content-end">
+     <label for="email" class="">Email*</label>
+      <input type="email" name="email" id="email" class="form-control" value="{{user.email}}"
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" required>
       <div class="valid-feedback col-9 p-0">
         Looks Great!
       </div>
       <div class="invalid-feedback col-9 p-0">
-        Your Email should be of the form mintek.co.za
+        Your Email should be of the form howzit@mintek.co.za
       </div>
     </div>
-    <div class="form-group row ml-1 mr-4 justify-content-end">
-      <label for="password" class="col-3 col-form-label text-right">Password</label>
-      <input type="password" name="password" id="password" class="col-9 form-control" value="{{user.password}}"
+    <div class="form-group justify-content-end">
+      <label for="password" class="">Password</label>
+      <input type="password" name="password" id="password" class="form-control" value="{{user.password}}"
         pattern="^\S{6,12}$" required>
       <div class="valid-feedback col-9 p-0">
         Looks Great!
@@ -34,8 +36,8 @@
         Your Password should have 6 - 12 Characters！
       </div>
     </div>
-    <div class="row ml-1 mr-4 mt-0 justify-content-end">
-      <div class="col-9 p-0 mt-0">
+    <div class="justify-content-end">
+      <div class="">
         <input type="submit" value="Log in" class="btn btn-info login-button">
         
       </div>
@@ -43,7 +45,7 @@
     <hr class="mx-4">
     <div class="row ml-1 mr-4 mt-0  justify-content-end">
       <div class="col-3 col-form-label"></div>
-      <div class="col-9 p-0 mt-0 d-flex justify-content-between align-items-center">
+      <div class="col-11 p-0 mt-0 d-flex justify-content-between align-items-center">
         <a href="/users/register" class="btn btn-sm btn-warning half-column"><i
             class=""></i>Register</a>
         <a href="/users/reset" class="btn btn-sm btn-danger half-column"><i ></i>Reset Password</a>

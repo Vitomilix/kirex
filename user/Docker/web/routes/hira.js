@@ -34,74 +34,74 @@ body('name')
   body('doneBefore')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！'),
+  .withMessage('Have you done this task before'),
   body('haveChangesMade')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！！'),
+  .withMessage('Have changes been made to the process'),
   body('electricalEquipment')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！！'),
+  .withMessage('Did you use electrical equipment'),
   body('safeAccess')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .withMessage('Was the area safe to access Required！'),
   body('machineGuarding')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！'),
+  .withMessage('Was machine guarding adequate！'),
   body('correctEquipment')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options!'),
+  .withMessage('Did you have the correct equipment'),
   body('preinspectedEquipment')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！'),
+  .withMessage('Was there equipment preinspected'),
   body('sds')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！'),
+  .withMessage('Have the SDS been read or reviewed'),
   body('controlToxic')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！'),
+  .withMessage('  Were the controls for toxic gasses/fumes in place'),
   body('fumeSystems')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Select one of the options！'),
+  .withMessage('Are Fume cupbords/extraction systems Working'),
   body('ppe')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .withMessage('Was the correct PPE valiable and used'),
   body('hazard')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .withMessage('What hazards did you encounter'),
   body('hazard')
   .trim()
-  .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .isLength({ min: 0, max: 255 })
+  .withMessage('What hazards did you encounter'),
   body('otherHazard')
   .trim()
-  .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .isLength({ min: 0, max: 255 })
+  .withMessage('Were there other hazards'),
   body('controlHazard')
   .trim()
-  .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .isLength({ min: 0, max: 255 })
+  .withMessage('How could the hazard be controlled'),
   body('controlHazardOther')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .withMessage('Were there other means to control '),
   body('monitorProcess')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Task/Activity Required！'),
+  .withMessage('Is the process to be monitored'),
    body('additionalComments')
   .trim()
-  .isLength({ min: 1, max: 255 })
+  .isLength({ min: 0, max: 255 })
   .withMessage('Task/Activity Required！'),
    
 ], homeController.postNewHira)
