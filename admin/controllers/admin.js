@@ -73,7 +73,7 @@ module.exports = {
 
       // Redirect to login page after successful signup
       res.redirect('/users/login')
-       req.flash('sucess', 'Registration work! check your email and click on the link to login')
+       req.flash('sucess', 'Registration work! Please log in')
       
       const link = "http://localhost:3000/users/login"
       // send successful sign up email
@@ -130,7 +130,7 @@ module.exports = {
 
       // no user found
       if (!admin) {
-        req.flash('error', 'Eish, your email was not found')
+        req.flash('error', 'Oh no, your email was not found')
         return res.redirect('/users/reset')
       }
 
@@ -150,7 +150,7 @@ module.exports = {
         from: 'oh_no@kirex.mail',
         subject: 'Password reset',
         html: `
-          <p>Eish ${admin.name},</p>
+          <p>Oh no ${admin.name},</p>
           <p>Have you forgotten your password? <br> Ok, we'll be nice!. Click <a href=${link}>this link</a>To reset your password</p>
         `
       })

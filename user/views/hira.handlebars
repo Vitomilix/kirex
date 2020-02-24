@@ -1,0 +1,544 @@
+
+  <div id="form" class="form-container position-relative shadow">
+  
+  <form id="hira_form" action="/hira" method="POST">
+    <div class="progress">
+    <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <fieldset>
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <h2>Step 1: General Information</h2>
+    <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{user.name}}" required readonly>
+     <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+    <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{user.email}}" required readonly>
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+	<div class="form-group">
+    <label for="employeeNumber">Employee Number</label>
+    <input type="text" class="form-control" id="employeeNumber" name="companyNumber" placeholder="Employee Number" value="{{user.employeeNumber}}" required readonly>
+    <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div> 
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div> 
+    </div>
+			<div class="form-group">
+    <label for="taskActivity">Task/Activity</label>
+    <input type="text" class="form-control" id="taskActivity" name="taskActivity" placeholder="Task/Activity to be performed" required>
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+		<div class="form-group">
+    <label for="projectNumber">Project Number</label>
+    <input type="text" class="form-control" id="projectNumber" name="projectNumber" placeholder="Project Number" required>
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+			<div class="form-group">
+    <label for="area">Area</label>
+    <input type="text" class="form-control" id="area" name="area" placeholder="Area" required>
+     <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+    <input type="button" name="next" class="next btn btn-danger" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2> Step 2: Task specific infomation</h2>
+    <div class="form-group">
+    <label for="doneBefore">Has this task been done before</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesdoneBefore" name="doneBefore" value="1">
+    <label for="radioYesdoneBefore">Yes</label>
+
+    <input type="radio" id="radioNodoneBefore" name="doneBefore" value="0">
+    <label for="radioNodoneBefore">No</label>
+
+    <input type="radio" id="radioNAdoneBefore" name="doneBefore" value="2">
+    <label for="radioNAdoneBefore">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+     <div class="form-group">
+    <label for="haveChangesMade">Have changes been made to standard Processes that might introduce new Hazards</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYeschangesMade" name="haveChangesMade" value="1">
+    <label for="radioYeschangesMade">Yes</label>
+
+    <input type="radio" id="radioNochangesMade" name="haveChangesMade" value="0">
+    <label for="radioNochangesMade">No</label>
+
+    <input type="radio" id="radioNAchangesMade" name="haveChangesMade" value="2">
+    <label for="radioNAchangesMade">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+        <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+	  <div class="form-group">
+    <label for="safeAccess">Safe access to work area - clean and tidy</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYessafeAccess" name="safeAccess" value="1">
+    <label for="radioYessafeAccess">Yes</label>
+
+    <input type="radio" id="radioNosafeAccess" name="safeAccess" value="0">
+    <label for="radioNosafeAccess">No</label>
+
+    <input type="radio" id="radioNAsafeAccess" name="safeAccess" value="2">
+    <label for="radioNAsafeAccess">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+     <div class="form-group">
+    <label for="electricalEquipment">Electrical Equipment in good condition</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYeselectricalEquipment" name="electricalEquipment" value="1">
+    <label for="radioYeselectricalEquipment">Yes</label>
+
+    <input type="radio" id="radioNoelectricalEquipment" name="electricalEquipment" value="0">
+    <label for="radioNoelectricalEquipment">No</label>
+
+    <input type="radio" id="radioNAelectricalEquipment" name="electricalEquipment" value="2">
+    <label for="radioNAelectricalEquipment">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+	   <div class="form-group">
+    <label for="machineGuarding">Is machine guarding adequate</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesmachineGuarding" name="machineGuarding" value="1">
+    <label for="radioYesmachineGuarding">Yes</label>
+
+    <input type="radio" id="radioNomachineGuarding" name="machineGuarding" value="0">
+    <label for="radioNomachineGuarding">No</label>
+
+    <input type="radio" id="radioNAmachineGuarding" name="machineGuarding" value="2">
+    <label for="radioNAmachineGuarding">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+    	   <div class="form-group">
+    <label for="machineGuarding">All tools/equipment pre-inspected</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYespreinspectedEquipment" name="preinspectedEquipment" value="1">
+    <label for="radioYespreinspectedEquipment">Yes</label>
+
+    <input type="radio" id="radioNopreinspectedEquipment" name="preinspectedEquipment" value="0">
+    <label for="radioNopreinspectedEquipment">No</label>
+
+    <input type="radio" id="radioNApreinspectedEquipment" name="preinspectedEquipment" value="2">
+    <label for="radioNApreinspectedEquipment">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+        	   <div class="form-group">
+    <label for="correctEquipment">Correct tools/eqipment available</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYescorrectEquipment" name="correctEquipment" value="1">
+    <label for="radioYescorrectEquipment">Yes</label>
+
+    <input type="radio" id="radioNocorrectEquipment" name="correctEquipment" value="0">
+    <label for="radioNocorrectEquipment">No</label>
+
+    <input type="radio" id="radioNAcorrectEquipment" name="correctEquipment" value="2">
+    <label for="radioNAcorrectEquipment">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+            	   <div class="form-group">
+    <label for="machineGuarding">Have the SDS been read or reviewed</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYessds" name="sds" value="1">
+    <label for="radioYessds">Yes</label>
+
+    <input type="radio" id="radioNosds" name="sds" value="0">
+    <label for="radioNosds">No</label>
+
+    <input type="radio" id="radioNAsds" name="sds" value="2">
+    <label for="radioNAsds">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+      <div class="form-group">
+    <label for="controlToxic">Controls for toxic gasses/fumes in place</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYescontrolToxic" name="controlToxic" value="1">
+    <label for="radioYescontrolToxic">Yes</label>
+
+    <input type="radio" id="radioNocontrolToxic" name="controlToxic" value="0">
+    <label for="radioNocontrolToxic">No</label>
+
+    <input type="radio" id="radioNAcontrolToxic" name="controlToxic" value="2">
+    <label for="radioNAcontrolToxic">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+     <div class="form-group">
+    <label for="fumeSystems">Are Fume cupbords/extraction systems Working</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesfumeSystems" name="fumeSystems" value="1">
+    <label for="radioYesfumeSystems">Yes</label>
+
+    <input type="radio" id="radioNofumeSystems" name="fumeSystems" value="0">
+    <label for="radioNofumeSystems">No</label>
+
+    <input type="radio" id="radioNAfumeSystems" name="fumeSystems" value="2">
+    <label for="radioNAfumeSystems">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+         <div class="form-group">
+    <label for="ppe">Correct PPE valiable and used</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesppe" name="ppe" value="1">
+    <label for="radioYesppe">Yes</label>
+
+    <input type="radio" id="radioNoppe" name="ppe" value="0">
+    <label for="radioNoppe">No</label>
+
+    <input type="radio" id="radioNAppe" name="ppe" value="2">
+    <label for="radioNAppe">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+	
+    <input type="button" name="previous" class="previous btn btn-warning" value="Previous" />
+    <input type="button" name="next" class="next btn btn-danger" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2>Step 3: Hazards</h2>
+    <div class="form-group">
+    <label for="hazards">Hazards</label>
+  
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="noise" value="noise">
+                        <label for="noise"> Noise </label>
+                    </div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="dust" value="dust">
+                        <label for="dust"> Dust </label>
+                    </div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="heat" value="heat">
+                        <label for="heat"> Heat </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="electricity" value="electricity">
+                        <label for="electricity"> Electricity </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="gases" value="gases">
+                        <label for="gases"> Gases </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="confinedSpaces" value="confined spaces">
+                        <label for="confinedSpaces"> Confined Spaces </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="compressedAir" value="compressed air">
+                        <label for="compressedAir"> Compressed Air </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="movingMachinery" value="moving machinery">
+                        <label for="movingMachinery"> Moving Machinery </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="chemicals" value="chemicals">
+                        <label for="chemicals"> Chemicals </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="mechanicalHandling" value="mechanical handling">
+                        <label for="mechanicalHandling"> Mechanical handling </label>
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+  <div class="form-group">
+   
+    <input type="hidden" class="form-control" id="hazard" name="hazard" placeholder="Selected Hazards">
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+    <div class="form-group">
+    <label for="otherHazard">Other Hazards not listed above, please specify (Enter 'none' if no other hazards apply</label>
+    <input type="text" class="form-control" id="otherHazard" name="otherHazard" placeholder="Other Hazards" required>
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+      <div class="form-group">
+    <label for="controlHazard">Control of Hazards</label>
+      <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class=" hazardControl" id="elimination" value="elimination">
+                        <label for="elimination"> Elimination </label>
+</div>
+<br>
+  <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class=" hazardControl" id="substitution" value="substitution">
+                        <label for="substitution"> Substitution </label>
+</div>
+<br>
+  <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class=" hazardControl" id="engineeringControl" value="engineering control">
+                        <label for="engineeringControl"> Engineering control </label>
+</div>
+<br>
+  <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class=" hazardControl" id="training" value="training">
+                        <label for="training"> Training </label>
+</div>
+<br>
+  <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class=" hazardControl" id="ppeControl"  value="ppe">
+                        <label for="ppeControl"> PPE </label>
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+    
+    <div class="form-group">
+    <input type="hidden" class="form-control" id="controlHazard" name="controlHazard" placeholder="Selected Hazard control">
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+    <div class="form-group">
+    <label for="controlHazardOther">Other means of Hazard Control not listed above, please specify</label>
+    <input type="text" class="form-control" id="controlHazardOther" name="controlHazardOther" placeholder="Other Hazards" required>
+      <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+    
+    
+         <div class="form-group">
+    <label for="monitorProcess">Monitor the process</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesmonitorProcess" name="monitorProcess" value="1">
+    <label for="radioYesmonitorProcess">Yes</label>
+
+    <input type="radio" id="radioNomonitorProcess" name="monitorProcess" value="0">
+    <label for="radioNomonitorProcess">No</label>
+
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+    <div class="form-group">
+    <label for="additionalComments">Additional Comments</label>
+    <input type="text" class="form-control" id="additionalComments" name="additionalComments" placeholder="Additional Comments">
+     <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+    <input type="button" name="previous" class="previous btn btn-warning" value="Previous" />
+    <input type="submit" name="submit" class="submit btn btn-success" value="Submit" />
+
+  </fieldset>
+  </form>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.hazard').click(function(){
+      let hazardsList = "";
+      $('.hazard:checked').each(function(){
+        hazardsList+=$(this).val()+ ', ';
+      });
+      hazardsList = hazardsList.substring(0, hazardsList.length - 1);
+      $('#hazard').val(hazardsList);
+    });
+});
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.hazardControl').click(function(){
+      let hazardControlList = "";
+      $('.hazardControl:checked').each(function(){
+        hazardControlList+=$(this).val()+ ', ';
+      });
+      hazardControlList = hazardControlList.substring(0, hazardControlList.length - 1);
+      $('#controlHazard').val(hazardControlList);
+    });
+});
+
+</script>
+
+<script>
+$(document).ready(function(){
+  var current = 1,current_step,next_step,steps;
+  steps = $("fieldset").length;
+  $(".next").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().next();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(++current);
+  });
+  $(".previous").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().prev();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(--current);
+  });
+  setProgressBar(current);
+  // Change progress bar action
+  function setProgressBar(curStep){
+    var percent = parseFloat(100 / steps) * curStep;
+    percent = percent.toFixed();
+    $(".progress-bar")
+      .css("width",percent+"%")
+      .html(percent+"%");   
+  }
+});
+</script>
+
+
