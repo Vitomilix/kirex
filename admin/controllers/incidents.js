@@ -14,12 +14,24 @@ module.exports = {
 
 
       const IncidentResults = await Incidents.findAll({
+
+        
           
       })
-   
+
+const incidentResultRaw = await Incidents.findAll({
+        attributes: ['date', 'division', 'incidentLocation', 'division_employee', 'events',  
+   'injuries',  'downtime', 'cause', 'measures' ],
+          raw: true
+      })
+
+      
+   let incidentResultRawString = JSON.stringify(incidentResultRaw); 
+
+         
    let title = "View Incidents | Kirex"
       
-      res.render('incidents', { layout: 'main', formCSS: true, title,IncidentResults })
+      res.render('incidents', { layout: 'main', formCSS: true, title,IncidentResults, incidentResultRawString })
     } catch (err) {
       return console.log(err)
     }
