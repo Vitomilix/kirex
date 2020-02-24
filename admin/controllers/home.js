@@ -40,12 +40,25 @@ module.exports = {
     }
   }
 })
+
+
+const hiraResultRaw = await Hira.findAll({
+        attributes: ['name', 'email', 'companyNumber','taskActivity', 'projectNumber', 'area',
+      'doneBefore', 'haveChangesMade', 'electricalEquipment',
+      'safeAccess','machineGuarding', 'correctEquipment','preinspectedEquipment',
+         'sds', 'controlToxic', 'fumeSystems',
+          'ppe', 'hazard', 'otherHazard', 'controlHazard', 'controlHazardOther', 'monitorProcess',
+          'additionalComments' ],
+          raw: true
+      })
+    let hiraResultRawString = JSON.stringify(hiraResultRaw); 
+
   
       
     let title = "Welcome to KirEx Admin"
   
       res.render('index', { indexCSS: true, countHira,countIncident, 
-      hiraLastMonth,incidentsLastMonth,
+      hiraLastMonth,incidentsLastMonth,hiraResultRawString,
       layout: "main",
       bodyclass: 'position-relative',
       title: title})

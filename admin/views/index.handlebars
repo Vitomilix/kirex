@@ -22,6 +22,9 @@
 
 <body id="page-top">
 
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.15.5/dist/xlsx.full.min.js"></script>
+   <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -220,7 +223,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+             <button id="button-a" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> <i class="fas fa-download fa-sm text-white-50"> </i> Generate Report</button>
           </div>
 
           <!-- Content Row -->
@@ -496,11 +499,13 @@
               <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">About KirEx</h6>
                 </div>
                 <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                  <p>KirEx is a new approach to Risk management and safety-related incidents reporting without the need for Paper reports. </p>
+                  <p class="mb-0">Every employee has an account on the user portal <a  target="_blank" href="hira:5000">found here</a> where they submit the Risk and/or Incident reports.</p>
+                  <p class="mb-0">As an admin you have an extensive overview of what had been submitted. You can view individual submissions on this platform or export the dataset as an <code>Excel</code> file for further processing by clicking the <code>Generate Report</code> above or in the <code>Hira/Incident</code> page</p>
+                <p class="mb-0">Should you experience technical difficulties, drop us a line on <a href="mailto:kirex@vitomilix-webdesign.com?subject=You are the best, but... [Insert Problem here]&body=Hi guys, %0D%0A Love KirEx but it seems to be that you missed a spot, can you please fix it. [INSERT PROBLEM HERE]%0D%0ALove you%0D%0A%0D%0A-me">kirex@vitomilix-webdesign.com</a> or contact Deon Lorentan.</p>
                 </div>
               </div>
 
@@ -520,8 +525,8 @@
             <p id="copyright"><div>
                 <script type="text/JavaScript"> 
                 let theDate = new Date();
-                let year = theDate.getFullYear();
-              document.getElementById("copyright").innerHTML = "Copyright ©&nbsp;Vitomilix " + year;
+                let currYear = theDate.getFullYear();
+              document.getElementById("copyright").innerHTML = "Copyright ©&nbsp;Vitomilix " + currYear;
             </script></div>
       </footer>
       <!-- End of Footer -->
@@ -572,6 +577,50 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script  hira = "{{countHira.count}}" incidents = "{{countIncident.count}}"  src="js/demo/chart-pie-demo.js"></script>
+
+
+{{!-- create XLSX Report --}}
+<script data="{{hiraResultRawString}}">
+  let data = document.currentScript.getAttribute('data');
+
+let jsonData = JSON.parse(data);
+
+
+
+let today = new Date();
+let day = String(today.getDate()).padStart(2, '0');
+let month = String(today.getMonth() + 1).padStart(2, '0'); 
+let year = today.getFullYear();
+
+let filename = "Hira-Export-" + day + "-" + month + "-" + year + ".xlsx";
+
+        var wb = XLSX.utils.book_new();
+        wb.Props = {
+                Title: "Hira Export",
+                Subject: "Export of Hira Records",
+                Author: "KirEx",
+                CreatedDate: new Date(year,month,day)
+        };
+        
+        wb.SheetNames.push("Hira Export");
+        var ws_data = [['hello' , 1]]; ;
+       var ws = XLSX.utils.json_to_sheet(jsonData);
+        wb.Sheets["Hira Export"] = ws;
+        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+        function s2ab(s) {
+  
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+                
+        }
+        $("#button-a").click(function(){
+                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), filename);
+        });
+  
+</script>
+
 
 </body>
 
