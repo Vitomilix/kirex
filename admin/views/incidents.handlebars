@@ -271,11 +271,14 @@
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
+          <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
+            <p id="copyright"><div>
+                <script type="text/JavaScript"> 
+                let theDate = new Date();
+                let currYear = theDate.getFullYear();
+              document.getElementById("copyright").innerHTML = "Copyright ©&nbsp;Vitomilix " + currYear;
+            </script></div>
       </footer>
       <!-- End of Footer -->
 
