@@ -3,7 +3,7 @@
     "username": "mysql",
     "password": "supersecret",
     "database": "kirex",
-    "host": "db",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {

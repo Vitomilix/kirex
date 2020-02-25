@@ -14,6 +14,8 @@ module.exports = {
 
   getHome: async (req, res) => {
     try {
+      let hiraMonths = [];
+      incidentMonth = [];
 
      const countHira = await Hira.findAndCountAll({
           
@@ -22,7 +24,54 @@ module.exports = {
        const countIncident = await Incidents.findAndCountAll({
           
       })
-      
+    let monthHira = 1;  
+while (monthHira < 13) {
+
+    const currMonth = await Hira.findAndCountAll({
+      attributes: ['id'],
+  where: {
+    createdAt: {
+      [Op.gte]: moment().subtract((30 * monthHira)-335, 'days').toDate()
+    }
+  }
+})
+
+hiraMonths.push(currMonth);
+
+monthHira++;
+
+  
+}
+
+let hiraMonthsCount = hiraMonths.map(c=>c.count);
+
+hiraMonthsCount = hiraMonthsCount.reverse();
+hiraMonthsCount= JSON.stringify(hiraMonthsCount);
+
+
+ let monthIncident = 1;  
+while (monthIncident < 13) {
+
+    const currMonth = await Incidents.findAndCountAll({
+      attributes: ['id'],
+  where: {
+    createdAt: {
+      [Op.gte]: moment().subtract((30 * monthIncident)-335, 'days').toDate()
+    }
+  }
+})
+
+incidentMonth.push(currMonth);
+
+monthIncident++;
+
+  
+}
+
+let incidentMonthsCount = incidentMonth.map(c=>c.count);
+
+incidentMonthsCount = incidentMonthsCount.reverse();
+incidentMonthsCount= JSON.stringify(incidentMonthsCount);
 
         
       const hiraLastMonth = await Hira.findAndCountAll({
@@ -58,7 +107,7 @@ const hiraResultRaw = await Hira.findAll({
     let title = "Welcome to KirEx Admin"
   
       res.render('index', { indexCSS: true, countHira,countIncident, 
-      hiraLastMonth,incidentsLastMonth,hiraResultRawString,
+      hiraLastMonth,incidentsLastMonth,hiraResultRawString, hiraMonthsCount,incidentMonthsCount,
       layout: "main",
       bodyclass: 'position-relative',
       title: title})
