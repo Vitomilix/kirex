@@ -20,12 +20,12 @@
 
     <div class="form-group">
     <label for="incidentLocation">Location within Division</label>
-    <input type="text" class="form-control" name="incidentLocation" id="incidentLocation" placeholder="Location within Division">
+    <input type="text" class="form-control" name="incidentLocation" id="incidentLocation" placeholder="Location within Division (e.g Storage or Lab 1)">
     </div>
 
     <div class="form-group">
     <label for="division_employee">Employee Division</label>
-    <input type="text" class="form-control" name="division_employee" id="division_employee" placeholder="Employee Division">
+    <input type="text" class="form-control" name="division_employee" id="division_employee" placeholder="Employee Division (To which devision does the employee belong to)">
     </div>
 
     <input type="button" name="next" class="next btn btn-danger btn-lg" value="Next" />
@@ -33,8 +33,8 @@
   <fieldset>
     <h2> Step 2: Incident specific infomation</h2>
        <div class="form-group">
-    <label for="events">Cause of Events</label>
-    <textarea  class="form-control" name="events" placeholder="Cause of Events"></textarea>
+    <label for="events">Course of Events</label>
+    <textarea  class="form-control" name="events" placeholder="Course of Events"></textarea>
     </div>
 
          <div class="form-group">
@@ -53,7 +53,7 @@
     </div>
 
         <div class="form-group">
-    <label for="measures">Measures taken to prevent such an incident from taking place again</label>
+    <label for="measures">Proposed measures to prevent such an incident from taking place again</label>
     <textarea  class="form-control" name="measures" placeholder="Measures taken to prevent such an incident from taking place again"></textarea>
     </div>
 	
@@ -65,7 +65,7 @@
     
   <div class="form-group">
     <label for="imageOne">Photo of incident</label>
-    <input type="file" name="imageOne" class="form-control-file" accept="image/*"  id="imageOne">
+    <input type="file" name="imageOne" class="form-control-file" accept="image/*"  id="imageOne" required>
   </div>
 
     <input type="button" name="previous" class="previous btn btn-warning btn-lg" value="Previous" />

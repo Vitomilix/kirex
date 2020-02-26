@@ -26,12 +26,13 @@ module.exports = {
       })
     let monthHira = 1;  
 while (monthHira < 13) {
-
+console.log("\n \n")
     const currMonth = await Hira.findAndCountAll({
       attributes: ['id'],
   where: {
-    createdAt: {
-      [Op.gte]: moment().subtract((30 * monthHira)-335, 'days').toDate()
+   createdAt: {
+      [Op.gte]: moment("0101", "MMDD").add(monthHira-1, 'months').toDate(),
+      [Op.lt]: moment("0101", "MMDD").add(monthHira, 'months').toDate(),
     }
   }
 })
@@ -45,7 +46,10 @@ monthHira++;
 
 let hiraMonthsCount = hiraMonths.map(c=>c.count);
 
-hiraMonthsCount = hiraMonthsCount.reverse();
+
+
+console.log(hiraMonthsCount);
+
 hiraMonthsCount= JSON.stringify(hiraMonthsCount);
 
 
@@ -55,9 +59,10 @@ while (monthIncident < 13) {
     const currMonth = await Incidents.findAndCountAll({
       attributes: ['id'],
   where: {
-    createdAt: {
-      [Op.gte]: moment().subtract((30 * monthIncident)-335, 'days').toDate()
-    }
+  createdAt: {
+      [Op.gte]: moment("0101", "MMDD").add(monthIncident-1, 'months').toDate(),
+      [Op.lt]: moment("0101", "MMDD").add(monthIncident, 'months').toDate(),
+  }
   }
 })
 
@@ -70,7 +75,7 @@ monthIncident++;
 
 let incidentMonthsCount = incidentMonth.map(c=>c.count);
 
-incidentMonthsCount = incidentMonthsCount.reverse();
+
 incidentMonthsCount= JSON.stringify(incidentMonthsCount);
 
         

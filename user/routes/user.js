@@ -34,7 +34,7 @@ router.post('/register', [
   body('rePassword')
     .custom((value, { req }) => {
       if (value !== req.body.password) {
-        throw new Error('Eish, your Passwords do not match')
+        throw new Error('Your Passwords do not match')
       }
       return true
     })

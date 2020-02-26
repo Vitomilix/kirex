@@ -2,10 +2,15 @@
   <div id="form" class="form-container position-relative shadow">
   
   <form id="hira_form" action="/hira" method="POST">
+   {{> message}}
     <div class="progress">
     <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
+<div class="col-12">
+        <small class="text-dark ">Should information not be available, enter <code>None</code> into the respective Field</small>
+      </div>
   <fieldset>
+    
       <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <h2>Step 1: General Information</h2>
     <div class="form-group">
@@ -41,7 +46,7 @@
     </div>
 			<div class="form-group">
     <label for="taskActivity">Task/Activity</label>
-    <input type="text" class="form-control" id="taskActivity" name="taskActivity" placeholder="Task/Activity to be performed" required>
+    <input type="text" class="form-control" id="taskActivity" name="taskActivity" placeholder="Task/Activity to be performed" >
       <div class="valid-feedback col-10 p-0">
         Looks Good!
       </div>
@@ -51,7 +56,7 @@
     </div>
 		<div class="form-group">
     <label for="projectNumber">Project Number</label>
-    <input type="text" class="form-control" id="projectNumber" name="projectNumber" placeholder="Project Number" required>
+    <input type="text" class="form-control" id="projectNumber" name="projectNumber" placeholder="Project Number">
       <div class="valid-feedback col-10 p-0">
         Looks Good!
       </div>
@@ -61,7 +66,7 @@
     </div>
 			<div class="form-group">
     <label for="area">Area</label>
-    <input type="text" class="form-control" id="area" name="area" placeholder="Area" required>
+    <input type="text" class="form-control" id="area" name="area" placeholder="Area" >
      <div class="valid-feedback col-10 p-0">
         Looks Good!
       </div>
@@ -379,7 +384,7 @@
 
     <div class="form-group">
     <label for="otherHazard">Other Hazards not listed above, please specify (Enter 'none' if no other hazards apply</label>
-    <input type="text" class="form-control" id="otherHazard" name="otherHazard" placeholder="Other Hazards" required>
+    <input type="text" class="form-control" id="otherHazard" name="otherHazard" placeholder="Other Hazards">
       <div class="valid-feedback col-10 p-0">
         Looks Good!
       </div>
@@ -434,7 +439,7 @@
 
     <div class="form-group">
     <label for="controlHazardOther">Other means of Hazard Control not listed above, please specify</label>
-    <input type="text" class="form-control" id="controlHazardOther" name="controlHazardOther" placeholder="Other Hazards" required>
+    <input type="text" class="form-control" id="controlHazardOther" name="controlHazardOther" placeholder="Other Hazards">
       <div class="valid-feedback col-10 p-0">
         Looks Good!
       </div>

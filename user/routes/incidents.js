@@ -29,24 +29,24 @@ body('date')
    body('events')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Longetude must be of the format 47.55454！'),
+  .withMessage('Events are required'),
   body('downtime')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Longetude must be of the format 47.55454！'),
+  .withMessage('Downtime is required'),
    
    body('injuries')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Longetude must be of the format 47.55454！'),
+  .withMessage('Injuries are required'),
      body('cause')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Longetude must be of the format 47.55454！'),
+  .withMessage('Cause is required'),
      body('measures')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Longetude must be of the format 47.55454！'),
+  .withMessage('Measures are required'),
      
 ], homeController.postNewIncident)
 
