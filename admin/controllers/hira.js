@@ -12,8 +12,46 @@ module.exports = {
   getHome: async (req, res) => {
     try {
 
+  
+
       const hiraResult = await Hira.findAll({
           order: [['id', 'DESC']]
+      })
+
+
+      const hiraResultRaw = await Hira.findAll({
+        attributes: ['name', 'email', 'companyNumber','taskActivity', 'projectNumber', 'area',
+      'doneBefore', 'haveChangesMade', 'electricalEquipment',
+      'safeAccess','machineGuarding', 'correctEquipment','preinspectedEquipment',
+         'sds', 'controlToxic', 'fumeSystems',
+          'ppe', 'hazard', 'otherHazard', 'controlHazard', 'controlHazardOther', 'monitorProcess',
+          'additionalComments' ],
+          raw: true
+      })
+    let hiraResultRawString = JSON.stringify(hiraResultRaw); 
+
+
+
+
+      
+   
+   let title = "View Hira results | Kirex"
+      
+      res.render('hira', { layout: 'main', formCSS: true, title, hiraResult, hiraResultRawString})
+    } catch (err) {
+      return console.log(err)
+    }
+  },
+
+    getLimit: async (req, res) => {
+    try {
+          let limit = req.query.limit;
+
+          limit = parseInt(limit);
+          
+      const hiraResult = await Hira.findAll({
+          order: [['id', 'DESC']],
+          limit: limit
       })
 
 

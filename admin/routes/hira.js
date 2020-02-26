@@ -9,6 +9,8 @@ const isAuthenticated = require('../config/auth')
 const { body } = require('express-validator')
 router.get('/', isAuthenticated, homeController.getHome)
 
+router.get('/limit', isAuthenticated, homeController.getLimit)
+
 // Create submit new point of interest
 router.post('/', isAuthenticated, [
 body('name')

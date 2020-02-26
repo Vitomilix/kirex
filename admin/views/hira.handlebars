@@ -171,6 +171,7 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">View Results</h6>
            <button id="button-a" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> <i class="fas fa-download fa-sm text-white-50"> </i> Generate Report</button>
+           <button id="filterHiraButton" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#hiraLimit"> <i class="fas fa-filter fa-sm text-white-50"> </i> Limit results</button>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -417,3 +418,37 @@ let filename = "Hira-Export-" + day + "-" + month + "-" + year + ".xlsx";
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+
+
+<!-- Hira Limit Modal Modal-->
+  <div class="modal fade" id="hiraLimit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">How many results would you like</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+<form id="modalForm" action="/hira/limit" method="GET">
+            <div class="form-group">
+              <input type="number" class="form-control bg-light border-0 small" name="limit"  placeholder="How many results would you like"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" aria-label="Search" aria-describedby="basic-addon2">
+            </div>
+           
+            <div class="form-group">
+                <button class="btn btn-primary btn-md" type="submit">
+                  Search
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+             
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
