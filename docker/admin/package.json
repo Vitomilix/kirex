@@ -1,8 +1,12 @@
 {
-  "name": "expense-tracker-in-sequelize",
+  "name": "kirex-admin",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Vitomilix/kirex.git"
+  },
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
