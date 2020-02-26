@@ -1,0 +1,110 @@
+
+  <div id="form" class="form-container position-relative shadow">
+    
+  <form id="incident_form" action="/incidents?_csrf={{csrfToken}}" method="POST" enctype="multipart/form-data">
+ {{> message}}
+  <div class="progress">
+    <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <fieldset>
+    <h2>Step 1: General Information</h2>
+    <div class="form-group">
+    <label for="date">Date</label>
+    <input type="date" class="form-control" id="date" name="date" placeholder="Date of Risk assessment">
+    </div>
+
+    <div class="form-group">
+    <label for="division">Division</label>
+    <input type="text" class="form-control" name="division" id="division" placeholder="Division">
+    </div>
+
+    <div class="form-group">
+    <label for="incidentLocation">Location within Division</label>
+    <input type="text" class="form-control" name="incidentLocation" id="incidentLocation" placeholder="Location within Division (e.g Storage or Lab 1)">
+    </div>
+
+    <div class="form-group">
+    <label for="division_employee">Employee Division</label>
+    <input type="text" class="form-control" name="division_employee" id="division_employee" placeholder="Employee Division (To which devision does the employee belong to)">
+    </div>
+
+    <input type="button" name="next" class="next btn btn-danger btn-lg" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2> Step 2: Incident specific infomation</h2>
+       <div class="form-group">
+    <label for="events">Course of Events</label>
+    <textarea  class="form-control" name="events" placeholder="Course of Events"></textarea>
+    </div>
+
+         <div class="form-group">
+    <label for="injuries">Injuries to report</label>
+    <textarea  class="form-control" name="injuries" placeholder="Injuries to report"></textarea>
+    </div>
+
+    <div class="form-group">
+    <label for="downtime">Downtime</label>
+    <input type="tel" class="form-control" name="downtime" id="downtime" placeholder="Downtime in Days" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+    </div>
+
+         <div class="form-group">
+    <label for="cause">Causes that led to the incident</label>
+    <textarea  class="form-control" name="cause" placeholder="Causes that led to the incident"></textarea>
+    </div>
+
+        <div class="form-group">
+    <label for="measures">Proposed measures to prevent such an incident from taking place again</label>
+    <textarea  class="form-control" name="measures" placeholder="Measures taken to prevent such an incident from taking place again"></textarea>
+    </div>
+	
+    <input type="button" name="previous" class="previous btn btn-warning btn-lg" value="Previous" />
+    <input type="button" name="next" class="next btn btn-danger btn-lg" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2>Step 3: Photo</h2>
+    
+  <div class="form-group">
+    <label for="imageOne">Photo of incident</label>
+    <input type="file" name="imageOne" class="form-control-file" accept="image/*"  id="imageOne" required>
+  </div>
+
+    <input type="button" name="previous" class="previous btn btn-warning btn-lg" value="Previous" />
+    <input type="submit" name="submit" class="submit btn btn-success btn-lg" value="Submit" />
+
+  </fieldset>
+  </form>
+</div>
+
+
+
+<script>
+$(document).ready(function(){
+  var current = 1,current_step,next_step,steps;
+  steps = $("fieldset").length;
+  $(".next").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().next();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(++current);
+  });
+  $(".previous").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().prev();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(--current);
+  });
+  setProgressBar(current);
+  // Change progress bar action
+  function setProgressBar(curStep){
+    var percent = parseFloat(100 / steps) * curStep;
+    percent = percent.toFixed();
+    $(".progress-bar")
+      .css("width",percent+"%")
+      .html(percent+"%");   
+  }
+});
+</script>
+
+

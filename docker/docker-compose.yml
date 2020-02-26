@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  db:
+    build: ./db
+    environment:
+      MYSQL_DATABASE: kirex
+      MYSQL_ROOT_PASSWORD: supersecret
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: supersecret
+      DATABASE_HOST: db
+  admin:
+    build: ./admin
+    environment:
+      DATABASE_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: kirex
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: supersecret
+    ports:
+      - "3001:3001"
+  user:
+    build: ./user
+    environment:
+      DATABASE_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: kirex
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: supersecret
+ 
+    ports:
+      - "3000:3000"
+  
+    depends_on:
+      - db
+    restart: on-failure
