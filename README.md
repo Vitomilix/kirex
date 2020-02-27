@@ -23,4 +23,4 @@ KirEx is a new Approach to Risk management which eliminates the need for Forms a
 ### Node.js
 1. `Clone/Download` the repository
 2. Navigate to the `folder/repository`
-3. Create a `mysql Database` called ``kirex` and run the sql script included in the `db` folder 
+3. Create a `mysql Database` called `kirex`` and run the sql script included in the `db` folder 
