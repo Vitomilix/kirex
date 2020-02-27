@@ -14,6 +14,13 @@ KirEx is a new Approach to Risk management which eliminates the need for Forms a
 [x] Submissions (and filtered results) can be exported to `Excel` format
 
 ## Usage 
-
-1. Clone/Download the repository
-2. 
+### Docker
+1. Install `Docker`
+2. Navigate to the `Docker` folder 
+3. Run the command `docker-compose up` 
+4. When completed `press `ctrl-C` to stop all containers
+5. Run `docker-compose start`
+### Node.js
+1. `Clone/Download` the repository
+2. Navigate to the `folder/repository`
+3. Create a `mysql Database` called ``kirex` and run the sql script included in the `db` folder 
