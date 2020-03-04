@@ -1,6 +1,6 @@
 const CACHE_NAME = 'kirex-cache';
 const urlsToCache = [
-	'/'
+
 ];
 
 self.addEventListener('install', event => {
