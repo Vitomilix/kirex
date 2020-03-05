@@ -23,7 +23,7 @@ KirEx is a new Approach to Risk management which eliminates the need for Forms a
 ### Node.js
 1. `Clone/Download` the repository by typing `git clone https://github.com/Vitomilix/kirex.git` or download `KirEx` from `https://github.com/Vitomilix/kirex/archive/1.0.0.zip`
 2. Navigate to the `folder/repository`
-3. Create a `mysql Database` called `kirex` and run the sql script included in the `db/sql-scripts` folder called `CreateDB.sql` by typing `mysql -u <YOURMYSQLUSERNAME> -p CreateDB.sql`
+3. Create a `mysql Database` called `kirex` and run the sql script included in the `db/sql-scripts` folder called `CreateTables.sql` by typing `mysql -u <YOURMYSQLUSERNAME> -p CreateTables.sql`
 It will ask you for your `MYSQL Password` 
 5. In the `user/app.js` file change the MySql Config in lines `14-19` with your config
 6.  In the `user/config/config.json` file change the MySql Config in lines `1-8` with your config
