@@ -1,9 +1,8 @@
 {
 	"lang": "en",
 	"dir": "ltr",
-	"name": "kirex",
-	"description": "A plain text description",
-	"short_name": "kirex",
+	"name": "KirEx Risk Management",
+	"short_name": "KirEx",
 	"description": "",
 	"theme_color": "#000",
 	"background_color": "#000",

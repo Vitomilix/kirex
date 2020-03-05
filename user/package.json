@@ -1,7 +1,7 @@
 {
   "name": "kirex",
   "version": "1.0.0",
-  "description": "The User portal for the KirEx Plattform",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

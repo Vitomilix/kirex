@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "mysql",
-    "password": "supersecret",
+    "username": "root",
+    "password": "12345678",
     "database": "kirex",
     "host": "localhost",
     "dialect": "mysql"
