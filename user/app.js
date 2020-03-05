@@ -23,7 +23,7 @@ dbquery.connect((err) => {
     if (err) {
         throw err;
     }
-    console.log('Connected to database');
+    //console.log('Connected to database');
 });
 global.dbquery = dbquery;
 // check if it's in production mode
@@ -32,9 +32,7 @@ if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 // Include models
 const db = require('./models')
 const User = db.User
-const Search = db.Search
-const Shop = db.Shop
-const Poi = db.Poi
+
 
 // Initialize csrf protection middleware
 const csrfProtection = csrf()
@@ -132,5 +130,5 @@ app.use(errorController.getError)
 
 // Start and listen to server
 app.listen(process.env.PORT || port, () => {
-  console.log(`Express is listening on http://localhost:${port}`)
+  //console.log(`Express is listening on http://localhost:${port}`)
 })
