@@ -8,7 +8,7 @@ const Op = Sequelize.Op
 const { validationResult } = require('express-validator')
 const fileUpload = require('express-fileupload');
 
-console.log(process.env);
+
 
 module.exports = {
   getHome: async (req, res) => {
