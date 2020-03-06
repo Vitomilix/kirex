@@ -105,3 +105,5 @@ dist
 user/mytable.tsv
 .DS_Store
 .DS_Store
+user/.env
+admin/.env

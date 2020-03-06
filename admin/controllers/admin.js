@@ -76,7 +76,7 @@ module.exports = {
       res.redirect('/users/login')
        req.flash('sucess', 'Registration work! Please log in')
       
-      const link = "http://localhost:3000/users/login"
+      const link = "http://" + process.env.HOSTNAME +":3000/users/login"
       // send successful sign up email
       await transporter.sendMail({
         to: email,
@@ -144,7 +144,7 @@ module.exports = {
       // redirect back to login page
       res.redirect('/users/login')
       
-      const link = `http://localhost:3000/users/reset/${token}`
+      const link = `http://` + process.env.HOSTNAME +`:3000/users/reset/${token}`
       // send a reset email to user with unique token 
       transporter.sendMail({
         to: req.body.email,
