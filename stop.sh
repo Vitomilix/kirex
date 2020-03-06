@@ -1,3 +1,4 @@
+#stop kire
 echo stopping services
 echo stopping user
 kill -9 $(lsof -t -i:3000)

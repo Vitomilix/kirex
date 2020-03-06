@@ -1,3 +1,4 @@
+#starting kirex
 echo starting user
 cd user
 node app.js &
