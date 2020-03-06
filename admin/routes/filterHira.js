@@ -1,6 +1,6 @@
 module.exports = {
     getFilteredHira: (req, res) => {
-        let query = "SELECT * from hiras WHERE  `name` LIKE '%"+req.query.name+"%' AND `projectNumber` LIKE '%"+req.query.projectNumber+"%' AND `area` LIKE '%"+req.query.area+"%'";
+        let query = "SELECT * from Hiras WHERE  `name` LIKE '%"+req.query.name+"%' AND `projectNumber` LIKE '%"+req.query.projectNumber+"%' AND `area` LIKE '%"+req.query.area+"%'";
         console.log(query);
         
         // execute query
