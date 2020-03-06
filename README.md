@@ -21,7 +21,7 @@ KirEx is a new Approach to Risk management which eliminates the need for Forms a
 4. When completed `press `ctrl-C` to stop all containers
 5. Run `docker-compose start`
 ### Node.js
-1. `Clone/Download` the repository by typing `git clone https://github.com/Vitomilix/kirex.git` or download `KirEx` from `https://github.com/Vitomilix/kirex/archive/1.0.0.zip`
+1. `Clone/Download` the repository by typing `git clone https://github.com/Vitomilix/kirex.git` or download `KirEx` from `https://github.com/Vitomilix/kirex/archive/1.0.3.zip`
 2. Navigate to the `folder/repository`
 3. Create a `mysql Database` called `kirex` and run the sql script included in the `db/sql-scripts` folder called `CreateTables.sql` by typing `mysql -u <YOURMYSQLUSERNAME> -p CreateTables.sql`
 It will ask you for your `MYSQL Password` 

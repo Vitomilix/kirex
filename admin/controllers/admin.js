@@ -1,5 +1,6 @@
 // Include modules
 const passport = require('passport')
+
 const { validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const Sequelize = require('sequelize')

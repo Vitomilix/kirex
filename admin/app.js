@@ -1,5 +1,6 @@
 // Include modules
 const express = require('express')
+require('dotenv').config();
 const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -13,11 +14,13 @@ const mysql = require('mysql')
 const fileUpload = require('express-fileupload');
 const isAuthenticated = require('./config/auth')
 const dbquery = mysql.createConnection ({
-    host: 'localhost',
-    user: 'root',
-    password: '12345678',
-    database: 'kirex'
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
 });
+
+
 
 // connect to database
 dbquery.connect((err) => {
