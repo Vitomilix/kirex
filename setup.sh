@@ -13,7 +13,7 @@ read dbpassword
 
 [ -e user/.env ] && rm user/.env
 
-echo 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 > user/.env
+echo SENDGRID_KEY=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 > user/.env
 echo MYSQL_HOST=localhost >> user/.env
 echo MYSQL_PORT=3306 >> user/.env
 echo MYSQL_USER=$dbusername >> user/.env
@@ -24,7 +24,7 @@ echo SENDGRID_USERNAME=vitomilix-kirex-mintek1 >> user/.env
 
 [ -e admin/.env ] && rm admin/.env
 
-echo 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 > admin/.env
+echo SENDGRID_KEY=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 > admin/.env
 echo MYSQL_HOST=localhost >> admin/.env
 echo MYSQL_PORT=3306 >> admin/.env
 echo MYSQL_USER=$dbusername >> admin/.env
@@ -48,7 +48,10 @@ echo setting up admin
 cd ..
 cd admin 
 npm install
+cd views/
+sed -i 's/localhost/plonker/g' incident.handlebars
+cd ..
 node app.js &
 echo Access User Interface on $hostname:3000  
 echo Access Admin Interface on $hostname:3001
-cd ..
+cd 

@@ -1,20 +1,22 @@
-// Include models
-//const { getFormatedMonth, getChartData } = require('../date-process')
 
 // Include models
 const db = require('../models')
+require('dotenv').config();
 const Incidents = db.Incidents
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const { validationResult } = require('express-validator')
 const fileUpload = require('express-fileupload');
+
+console.log(process.env);
+
 module.exports = {
   getHome: async (req, res) => {
     try {
 
-
+      const hostname = process.env.HOSTNAME;
       const IncidentResults = await Incidents.findAll({
-
+        
         
           
       })
@@ -31,7 +33,7 @@ const incidentResultRaw = await Incidents.findAll({
          
    let title = "View Incidents | Kirex"
       
-      res.render('incidents', { layout: 'main', formCSS: true, title,IncidentResults, incidentResultRawString })
+      res.render('incidents', { layout: 'main', formCSS: true, title,IncidentResults, incidentResultRawString, hostname })
     } catch (err) {
       return console.log(err)
     }

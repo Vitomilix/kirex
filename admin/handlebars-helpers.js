@@ -1,5 +1,5 @@
 const Handlebars = require('handlebars')
-
+require('dotenv').config();
 Handlebars.registerHelper('getIcon', function (category, options) {
   return category === '家居物業' ? `<i class="fas fa-home text-danger"></i>`
     : category === '交通出行' ? `<i class="fas fa-shuttle-van text-primary"></i>`
@@ -15,6 +15,8 @@ Handlebars.registerHelper('getText', function (value, options) {
       : value === 2 ? `N/A`
           : `No Data`
 })
+
+
 Handlebars.registerHelper('isSelected', function (selectedOption, thisOption, options) {
   return (selectedOption === thisOption) ? 'selected' : ''
 })

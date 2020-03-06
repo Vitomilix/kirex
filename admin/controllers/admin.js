@@ -1,6 +1,6 @@
 // Include modules
 const passport = require('passport')
-
+require('dotenv').config();
 const { validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const Sequelize = require('sequelize')
@@ -18,7 +18,6 @@ const Admin = db.Admin
 const transporter = nodemailer.createTransport(sendgridTransport({
   auth: {
     // Hide SMTP sendgrind key
-    api_user: process.env.SENDGRID_USERNAME,
     api_key: process.env.SENDGRID_KEY
   }
 }))
