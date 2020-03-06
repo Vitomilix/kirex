@@ -20,6 +20,7 @@ echo MYSQL_USER=$dbusername >> user/.env
 echo MYSQL_PASSWORD=$dbpassword >> user/.env
 echo MYSQL_DATABASE=kirex >> user/.env
 echo HOSTNAME=$hostname >> user/.env
+echo SENDGRID_USERNAME=vitomilix-kirex-mintek1 >> user/.env
 
 [ -e admin/.env ] && rm admin/.env
 
@@ -30,6 +31,7 @@ echo MYSQL_USER=$dbusername >> admin/.env
 echo MYSQL_PASSWORD=$dbpassword >> admin/.env
 echo MYSQL_DATABASE=kirex >> admin/.env
 echo HOSTNAME=$hostname >> admin/.env
+echo SENDGRID_USERNAME=vitomilix-kirex-mintek1 >> admin/.env
 
 
 

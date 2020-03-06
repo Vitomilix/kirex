@@ -18,7 +18,7 @@ const Admin = db.Admin
 const transporter = nodemailer.createTransport(sendgridTransport({
   auth: {
     // Hide SMTP sendgrind key
-    
+    api_user: process.env.SENDGRID_USERNAME,
     api_key: process.env.SENDGRID_KEY
   }
 }))
