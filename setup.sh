@@ -49,7 +49,7 @@ cd ..
 cd admin 
 npm install
 cd views/
-sed -i "s/localhost/$hostname/g" incident.handlebars
+sed -i "s/localhost/$hostname/g" incidents.handlebars
 cd ..
 node app.js &
 echo Access User Interface on $hostname:3000  
