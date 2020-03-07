@@ -7,10 +7,15 @@ KirEx is a new Approach to Risk management which eliminates the need for Forms a
 ## Features
 
 [x] Logging of Risk assessments
+
 [x] Logging of safety related incidents
+
 [x] Each submission is tied to a user.
+
 [x] Admins see trends over the course of a year to track amount of submissions
+
 [x] Submissions can be filtered and viewed
+
 [x] Submissions (and filtered results) can be exported to `Excel` format
 
 ## Setup 
@@ -31,8 +36,10 @@ It will ask you for your `MYSQL Password`
 ## Usage  
 
 Access the User Portal on `<YOURHOSTNAME>:3000`
+
 Access the Admin Portal on `<YOURHOSTNAME>:3001`
 
 ## Notes
 To stop KirEx run `./stop.sh`
+
 To start KirEx run `./start.sh`
