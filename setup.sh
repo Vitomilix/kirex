@@ -72,8 +72,11 @@ cd views/
 sed -i "s/localhost/$hostname/g" incidents.handlebars
 cd ..
 pm2 start --name kirex-admin app.js
-echo Access User Interface on $hostname:3000  
-echo Access Admin Interface on $hostname:3001
+
 cd 
 pm2 startup systemd -u root --hp /root
 pm2 save
+
+echo -e "\e[1;32m Setup Completed \e[0m"
+echo Access User Interface on $hostname:3000  
+echo Access Admin Interface on $hostname:3001
