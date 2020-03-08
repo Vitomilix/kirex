@@ -1,6 +1,6 @@
 # SETUP
 
-
+./pre-setup
 
 
 echo getting things ready...
