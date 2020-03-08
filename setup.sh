@@ -10,7 +10,8 @@ echo Enter the password of your Database
 read dbpassword
 
 echo Creating Database 
-mysql -u$dbusername -p < db/sql-scripts/CreateTables.sql
+mysql -u$dbusername -p$dbpassword < db/sql-scripts/CreateDB.sql
+mysql -u$dbusername -p$dbpassword < db/sql-scripts/CreateTables.sql
 
 # create .env
 
