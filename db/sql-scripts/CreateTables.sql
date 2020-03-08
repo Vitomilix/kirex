@@ -1,3 +1,5 @@
+CREATE DATABASE kirex
+USE kirex
 CREATE TABLE Admins (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name varchar(255) DEFAULT NULL,
