@@ -59,6 +59,7 @@ echo SENDGRID_USERNAME=vitomilix-kirex-mintek1 >> admin/.env
 
 echo setting repository
 npm config set registry http://registry.npmjs.org/
+npm install -g pm2
 echo setting up user
 cd user
 npm install
@@ -75,4 +76,4 @@ echo Access User Interface on $hostname:3000
 echo Access Admin Interface on $hostname:3001
 cd 
 pm2 startup systemd -u root --hp /root
-pm2 start
+pm2 save
