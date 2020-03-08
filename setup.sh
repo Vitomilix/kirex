@@ -1,5 +1,8 @@
 # SETUP
 
+
+
+
 echo getting things ready...
 echo Enter the hostname/ip address of your Server \(eg. localhost\)
 read hostname
