@@ -7,7 +7,7 @@ echo Enter the username of your Database
 read dbusername
 
 echo Enter the password of your Database
-read dbpassword
+read -s dbpassword
 
 echo Creating Database 
 mysql -u$dbusername -p$dbpassword < db/sql-scripts/CreateDB.sql
