@@ -1,6 +1,6 @@
 # SETUP
-
-./pre-setup
+#!/bin/bash
+sh ./pre-setup
 
 
 echo getting things ready...
