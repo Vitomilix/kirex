@@ -1,9 +1,7 @@
 #starting kirex
 echo starting user
-cd user
-node app.js &
+pm2 start kirex-user
 cd ..
 echo starting admin
-cd admin
-node app.js &
+pm2 start kirex-admin
 echo started all services

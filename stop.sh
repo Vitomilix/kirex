@@ -1,7 +1,7 @@
 #stop kirex
 echo stopping services
 echo stopping user
-fuser -n tcp -k 3000
+pm2 stop kirex-user
 echo stopping admin
-fuser -n tcp -k 3001
+pm2 stop kirex-admin
 echo all services stopped

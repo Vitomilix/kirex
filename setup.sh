@@ -39,11 +39,8 @@ echo setting repository
 npm config set registry http://registry.npmjs.org/
 echo setting up user
 cd user
-
-
-
 npm install
-node app.js &
+pm2 start --name kirex-user app.js
 echo setting up admin
 cd ..
 cd admin 
@@ -51,7 +48,9 @@ npm install
 cd views/
 sed -i "s/localhost/$hostname/g" incidents.handlebars
 cd ..
-node app.js &
+pm2 start --name kirex-admin app.js
 echo Access User Interface on $hostname:3000  
 echo Access Admin Interface on $hostname:3001
 cd 
+pm2 startup systemd -u root --hp /root
+pm2 start
