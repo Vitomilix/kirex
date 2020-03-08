@@ -7,7 +7,7 @@ echo -e "\e[1;32m _|  _|      _|    _|    _|  _|          _|  _|    \e[0m"
 echo -e "\e[1;32m _|    _|  _|_|_|  _|    _|  _|_|_|_|  _|      _| \e[0m"
 
 
-printf \n \n
+
 
 echo Welcome to KirEx 1.0.5
 
