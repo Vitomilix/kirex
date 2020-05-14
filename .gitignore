@@ -107,3 +107,4 @@ user/mytable.tsv
 .DS_Store
 user/.env
 admin/.env
+user/.DS_Store
