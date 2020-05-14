@@ -19,7 +19,7 @@ echo "\e[1;32m Starting Services again\e[0m"
 sh ./start.sh
 echo "\e[1;32m Update complete\e[0m"
 else
-   echo "\e[1;32m Ok fine, maybe next time\e[0m" 
+   echo "\e[1;32m Ok fine, maybe next time!\e[0m" 
 fi
 
 
