@@ -41,5 +41,14 @@ To stop KirEx run `./stop.sh`
 
 To start KirEx run `./start.sh`
 
+To update KirEx run `./update.sh`
+
+
+## Future Versions
+
+- Desktop App
+- Updated User Login and Registration
+- New Email api
+
 
 <sup>1</sup> Will make future updates easier and Git should be installed on `Ubuntu` by default 
