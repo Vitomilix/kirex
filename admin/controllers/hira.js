@@ -25,6 +25,8 @@ module.exports = {
       'safeAccess','machineGuarding', 'correctEquipment','preinspectedEquipment',
          'sds', 'controlToxic', 'fumeSystems',
           'ppe', 'hazard', 'otherHazard', 'controlHazard', 'controlHazardOther', 'monitorProcess',
+          'contactbetween', 'socialdistancing', 'workspacecleaned', 'placewashhands', 'papertissues', 'accesstosanitizing', 
+          'postersPromoting', 'flulikesymptoms', 'irritateairways', 'naturalventilation',
           'additionalComments' ],
           raw: true
       })
