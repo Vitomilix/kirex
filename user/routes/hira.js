@@ -107,43 +107,43 @@ body('name')
   body('contactbetween')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Is the work area arranged to ensure minimal contact between workers'),
   body('socialdistancing')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Have other measures been implemented to achieve social distancing? (E.g. Screens)'),
   body('workspacecleaned')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Was the workspace cleaned/disinfected before the commencement of work'),
   body('placewashhands')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Do workers have access to a place where they can wash their hands with soap and water'),
   body('papertissues')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Are paper tissues available'),
   body('accesstosanitizing')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Do workers have access to sanitizing hand rub dispensers'),
   body('postersPromoting')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Are posters promoting regular hand-washing displayed'),
   body('flulikesymptoms')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Does any of the workers involved present with flu-like symptoms'),
   body('irritateairways')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Does the work include the use of material that is likely to irritate airways?'),
   body('naturalventilation')
   .trim()
   .isLength({ min: 1, max: 255 })
-  .withMessage('Is the process to be monitored'),
+  .withMessage('Does the area have sufficient natural ventilation'),
 
 
 
