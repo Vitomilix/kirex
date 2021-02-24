@@ -23,6 +23,16 @@ module.exports = (sequelize, DataTypes) => {
     controlHazard: DataTypes.STRING,
     controlHazardOther: DataTypes.STRING,
     monitorProcess: DataTypes.STRING,
+        contactbetween: DataTypes.STRING,
+    socialdistancing: DataTypes.STRING,
+    workspacecleaned: DataTypes.STRING,
+    placewashhands: DataTypes.STRING,
+    papertissues: DataTypes.STRING,
+    accesstosanitizing: DataTypes.STRING,
+    postersPromoting: DataTypes.STRING,
+    flulikesymptoms: DataTypes.STRING,
+    irritateairways: DataTypes.STRING,
+    naturalventilation: DataTypes.STRING,
     additionalComments: DataTypes.TEXT
   }, {});
   Hira.associate = function (models) {

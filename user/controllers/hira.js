@@ -30,6 +30,8 @@ module.exports = {
       safeAccess,machineGuarding, correctEquipment,preinspectedEquipment,
          sds, controlToxic, fumeSystems,
           ppe, hazard, otherHazard, controlHazard, controlHazardOther, monitorProcess,
+          contactbetween, socialdistancing, workspacecleaned, placewashhands, papertissues, accesstosanitizing, 
+          postersPromoting, flulikesymptoms, irritateairways, naturalventilation,
           additionalComments } = req.body
     //Input validation
     const errors = validationResult(req)
@@ -41,6 +43,8 @@ module.exports = {
       safeAccess,machineGuarding, correctEquipment,preinspectedEquipment,
          sds, controlToxic, fumeSystems,
           ppe, hazard, otherHazard, controlHazard, controlHazardOther, monitorProcess,
+          contactbetween, socialdistancing, workspacecleaned, placewashhands, papertissues, accesstosanitizing, 
+          postersPromoting, flulikesymptoms, irritateairways, naturalventilation,
           additionalComments},
         formValidateJS: true,
         errorMessages: errors.array()
@@ -70,6 +74,16 @@ module.exports = {
       controlHazard: controlHazard,
       controlHazardOther: controlHazardOther,
       monitorProcess: monitorProcess,
+      contactbetween: contactbetween, 
+      socialdistancing: socialdistancing, 
+      workspacecleaned: workspacecleaned, 
+      placewashhands: placewashhands, 
+      papertissues: papertissues, 
+      accesstosanitizing: accesstosanitizing, 
+      postersPromoting: postersPromoting, 
+      flulikesymptoms: flulikesymptoms, 
+      irritateairways: irritateairways, 
+      naturalventilation: naturalventilation,
       additionalComments: additionalComments,
       UserId: req.user.id
     })

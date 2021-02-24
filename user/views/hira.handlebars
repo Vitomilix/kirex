@@ -308,8 +308,252 @@
     <input type="button" name="previous" class="previous btn btn-warning" value="Previous" />
     <input type="button" name="next" class="next btn btn-danger" value="Next" />
   </fieldset>
+
+{{!-- START --}}
+
+
+<fieldset>
+    <h2> Step 3: Covid19 specific infomation</h2>
+    <div class="form-group">
+    <label for="contactbetween">Is the work area arranged to ensure minimal contact between workers</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYescontactbetween" name="contactbetween" value="1">
+    <label for="radioYescontactbetween">Yes</label>
+
+    <input type="radio" id="radioNocontactbetween" name="contactbetween" value="0">
+    <label for="radioNocontactbetween">No</label>
+
+    <input type="radio" id="radioNAcontactbetween" name="contactbetween" value="2">
+    <label for="radioNAcontactbetween">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+        <div class="form-group">
+    <label for="socialdistancing">Have other measures been implemented to achieve social distancing? (E.g. Screens)</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYessocialdistancing" name="socialdistancing" value="1">
+    <label for="radioYessocialdistancing">Yes</label>
+
+    <input type="radio" id="radioNosocialdistancing" name="socialdistancing" value="0">
+    <label for="radioNosocialdistancing">No</label>
+
+    <input type="radio" id="radioNAsocialdistancing" name="socialdistancing" value="2">
+    <label for="radioNAsocialdistancing">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+        <div class="form-group">
+    <label for="workspacecleaned">Was the workspace cleaned/disinfected before the commencement of work</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesworkspacecleaned" name="workspacecleaned" value="1">
+    <label for="radioYesworkspacecleaned">Yes</label>
+
+    <input type="radio" id="radioNoworkspacecleaned" name="workspacecleaned" value="0">
+    <label for="radioNoworkspacecleaned">No</label>
+
+    <input type="radio" id="radioNAworkspacecleaned" name="workspacecleaned" value="2">
+    <label for="radioNAworkspacecleaned">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+        <div class="form-group">
+    <label for="placewashhands">Do workers have access to a place where they can wash their hands with soap and water</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesplacewashhands" name="placewashhands" value="1">
+    <label for="radioYesplacewashhands">Yes</label>
+
+    <input type="radio" id="radioNoplacewashhands" name="placewashhands" value="0">
+    <label for="radioNoplacewashhands">No</label>
+
+    <input type="radio" id="radioNAplacewashhands" name="placewashhands" value="2">
+    <label for="radioNAplacewashhands">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+        <div class="form-group">
+    <label for="papertissues">Are paper tissues available</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYespapertissues" name="papertissues" value="1">
+    <label for="radioYespapertissues">Yes</label>
+
+    <input type="radio" id="radioNopapertissues" name="papertissues" value="0">
+    <label for="radioNopapertissues">No</label>
+
+    <input type="radio" id="radioNApapertissues" name="papertissues" value="2">
+    <label for="radioNApapertissues">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+        <div class="form-group">
+    <label for="accesstosanitizing">Do workers have access to sanitizing hand rub dispensers</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesaccesstosanitizing" name="accesstosanitizing" value="1">
+    <label for="radioYesaccesstosanitizing">Yes</label>
+
+    <input type="radio" id="radioNoaccesstosanitizing" name="accesstosanitizing" value="0">
+    <label for="radioNoaccesstosanitizing">No</label>
+
+    <input type="radio" id="radioNAaccesstosanitizing" name="accesstosanitizing" value="2">
+    <label for="radioNAaccesstosanitizing">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+        <div class="form-group">
+    <label for="postersPromoting">Are posters promoting regular hand-washing displayed</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYespostersPromoting" name="postersPromoting" value="1">
+    <label for="radioYespostersPromoting">Yes</label>
+
+    <input type="radio" id="radioNopostersPromoting" name="postersPromoting" value="0">
+    <label for="radioNopostersPromoting">No</label>
+
+    <input type="radio" id="radioNApostersPromoting" name="postersPromoting" value="2">
+    <label for="radioNApostersPromoting">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+        <div class="form-group">
+    <label for="flulikesymptoms">Does any of the workers involved present with flu-like symptoms</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesflulikesymptoms" name="flulikesymptoms" value="1">
+    <label for="radioYesflulikesymptoms">Yes</label>
+
+    <input type="radio" id="radioNoflulikesymptoms" name="flulikesymptoms" value="0">
+    <label for="radioNoflulikesymptoms">No</label>
+
+    <input type="radio" id="radioNAflulikesymptoms" name="flulikesymptoms" value="2">
+    <label for="radioNAflulikesymptoms">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+        <div class="form-group">
+    <label for="irritateairways">Does the work include the use of material that is likely to irritate airways? (E.g. dust-producing material)/label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesirritateairways" name="irritateairways" value="1">
+    <label for="radioYesirritateairways">Yes</label>
+
+    <input type="radio" id="radioNoirritateairways" name="irritateairways" value="0">
+    <label for="radioNoirritateairways">No</label>
+
+    <input type="radio" id="radioNAirritateairways" name="irritateairways" value="2">
+    <label for="radioNAirritateairways">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+        <div class="form-group">
+    <label for="naturalventilation">Does the area have sufficient natural ventilatione</label>
+	<br>
+<div class="radio-toolbar">
+    <input type="radio" id="radioYesnaturalventilation" name="naturalventilation" value="1">
+    <label for="radioYesnaturalventilation">Yes</label>
+
+    <input type="radio" id="radioNonaturalventilation" name="naturalventilation" value="0">
+    <label for="radioNonaturalventilation">No</label>
+
+    <input type="radio" id="radioNAnaturalventilation" name="naturalventilation" value="2">
+    <label for="radioNAnaturalventilation">N/A</label> 
+</div>
+  <div class="valid-feedback col-10 p-0">
+        Looks Good!
+      </div>
+       <div class="invalid-feedback col-10 p-0">
+        This is required！
+      </div>
+    </div>
+
+
+
+	
+    <input type="button" name="previous" class="previous btn btn-warning" value="Previous" />
+    <input type="button" name="next" class="next btn btn-danger" value="Next" />
+  </fieldset>
+
+
+
+{{!-- END --}}
+
+  
   <fieldset>
-    <h2>Step 3: Hazards</h2>
+    <h2>Step 4: Hazards</h2>
     <div class="form-group">
     <label for="hazards">Hazards</label>
   
@@ -361,6 +605,11 @@
 <div class="checkbox checkbox-inline checkbox-danger checkbox-md">
                         <input type="checkbox" class="hazard" id="mechanicalHandling" value="mechanical handling">
                         <label for="mechanicalHandling"> Mechanical handling </label>
+</div>
+<br>
+<div class="checkbox checkbox-inline checkbox-danger checkbox-md">
+                        <input type="checkbox" class="hazard" id="coronavirus" value="Coronavirus">
+                        <label for="coronavirus"> Coronavirus </label>
 </div>
   <div class="valid-feedback col-10 p-0">
         Looks Good!

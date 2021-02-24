@@ -99,6 +99,56 @@ body('name')
   .trim()
   .isLength({ min: 1, max: 255 })
   .withMessage('Is the process to be monitored'),
+
+
+
+
+
+  body('contactbetween')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('socialdistancing')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('workspacecleaned')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('placewashhands')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('papertissues')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('accesstosanitizing')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('postersPromoting')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('flulikesymptoms')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('irritateairways')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+  body('naturalventilation')
+  .trim()
+  .isLength({ min: 1, max: 255 })
+  .withMessage('Is the process to be monitored'),
+
+
+
+
+  
    body('additionalComments')
   .trim()
   .isLength({ min: 0, max: 255 })
